@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+/home/augusto/Documentos/Pasta Augusto /projetos_alura/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3678385249.index
+/casadocodigo/src/main/java
+/home/augusto/Documentos/Pasta Augusto /projetos_alura/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2146136980.index
+/casadocodigo/src/main/java
+/home/augusto/Documentos/Pasta Augusto /projetos_alura/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1077950361.index
+/casadocodigo/src/main/java

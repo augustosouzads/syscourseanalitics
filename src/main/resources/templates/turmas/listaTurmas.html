@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Turmas</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Lista de Turmas</h1>
+    </div>
+
+<div id="listaDeTurmas">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Turma ID</th>
+            <th>Turma</th>
+            <th>Período</th>
+        </tr>
+        </thead>
+        <tr th:each="turma : ${turmas}">
+            <td> <span th:text="${turma.turmaId}"></span> </td>
+            <td> <span th:text="${turma.turmaNome}"></span> </td>
+            <td> <span th:text="${turma.periodo}"></span> </td>
+        </tr>
+    </table>
+</div>
+
+	<a href="turmaForm" class="btn btn-lg btn-primary">Cadastrar Nova</a>
+	<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	
+
+<hr/>
+	<form action="deletarTurma" method="get">
+	 	<div class="form-group">
+        	  <label for="nome">Excluir Turma</label> 
+          	  <input type="text" class="form-control" id="turmaId" name="turmaId" placeholder="id"/>
+        </div>
+        	  <button type="submit" class="btn btn-lg btn-primary" style="color: red">Excluir Turma</button>
+    </form>
+<hr/>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

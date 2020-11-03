@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.SpringBootApplication"/>
+<fullyQualifiedTypeName name="org.springframework.boot.SpringApplication"/>
+<fullyQualifiedTypeName name="br.com.alura.listavip.Configuracao"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="br.com.alura.enviadorEmail.enviadorEmail.EmailService"/>
+<fullyQualifiedTypeName name="java.lang.Iterable"/>
+<fullyQualifiedTypeName name="br.com.alura.listavip.repository.ConvidadoRepository"/>
+<fullyQualifiedTypeName name="br.com.alura.listavip.model.Convidado"/>
+<fullyQualifiedTypeName name="br.com.alura.listavip.service.ConvidadoService"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="br.com.alura.enviadorEmail.EmailService"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.domain.EntityScan"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="java.lang.StrictMath"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+<fullyQualifiedTypeName name="com.system.course.repositories.ProfessorRepository"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.system.course.models.Professor"/>
+<fullyQualifiedTypeName name="com.system.course.analitics.services.ProfessorService"/>
+<fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+</qualifiedTypeNameHistroy>

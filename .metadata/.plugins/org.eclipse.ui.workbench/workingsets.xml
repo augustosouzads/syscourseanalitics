@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1599954716963_0" label="Java Main Sources" name="Java Main Sources"/>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1599954716986_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1599955505104_3" label="AluraProjects" name="AluraProjects"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1600299735310_5" label="faculdade" name="faculdade">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/listavip" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/analitics" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/casadocodigo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/deliveryManager" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1600302855358_6" label="WorkConductor" name="WorkConductor">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cipher-parent" type="4"/>
+<item elementID="=cipher-daemon" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cipher" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1600303116914_8" label="cipher-parent" name="cipher-parent">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cipher-parent" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cipher-daemon" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cipher" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1599954719132_2" label="Window Working Set" name="Aggregate for window 1599954719131"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1600302866836_7" label="Multiple Working Sets" name="Aggregate:faculdade:WorkConductor:">
+<workingSet IMemento.internal.id="faculdade"/>
+<workingSet IMemento.internal.id="WorkConductor"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1601244649773_8" label="Multiple Working Sets" name="Aggregate:AluraProjects:faculdade:">
+<workingSet IMemento.internal.id="AluraProjects"/>
+<workingSet IMemento.internal.id="faculdade"/>
+</workingSet>
+<mruList name="faculdade"/>
+<mruList name="AluraProjects"/>
+<mruList name="WorkConductor"/>
+<mruList name="Java Main Sources"/>
+</workingSetManager>

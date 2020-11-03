@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+/home/augusto/Documentos/Pasta Augusto /projetos_alura/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes

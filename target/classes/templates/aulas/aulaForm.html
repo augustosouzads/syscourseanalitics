@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Aulas</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+        <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+            <h1>Cadastro de Aulas</h1>
+        </div>
+
+	<form action="cadastrarAula" name='aulaForm' th:object="${disciplinas}" method="POST" >
+	   
+     <div class="form-group">
+        <label for="quantidadeAlunos">Quantida de Alunos</label> 
+        <input type="number" class="form-control" id="quantidadeAlunos" name="quantidadeAlunos" placeholder="Somente numeros"/>
+    
+        <label for="data">Data </label> 
+        <input type="date" class="form-control" id="data" name="data" />
+    </div>
+    
+    <div class="form-group">
+        <label for="link">Link da Aula </label> 
+        <input type="text" class="form-control" id="link" name="link" placeholder="cole o link da aula aqui"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="conteudo">Conteudo da Aula</label>
+        <input type="text" class="form-control" id="conteudo" name="conteudo" placeholder="Conteúdo didático"/>
+    </div>
+   
+ <!--      
+    <div>
+		<label  class="col-form-label">Disciplina </label>
+			<select id="disciplina" name="disciplina" th:field="*{disciplina.id}">
+   				<option th:each="disciplina : ${disciplinas}"
+   				th:value="${disciplina.disciplinaId}"
+   			    th:utext="${disciplina.titulo}"></option>
+   			</select>
+   	</div>
+   -->
+   <div class="form-group">
+        <label for="curso"> Curso </label> 
+       	    <select id="cursoId" name="cursoId" class="custom-select">
+		        <option selected="selected">Please select the course...</option>
+		        <option th:each="curso : ${cursos}"
+		        th:value="${curso.cursoId}"
+		        th:utext="${'ID= '+curso.cursoId+' / '+curso.cursoTitulo+' ('+curso.sigla+')'}"></option>		
+      		</select>
+    </div>
+
+     <div class="form-group">
+       <label for="turmas"> Disciplina </label> 
+     	 <select id="disciplinaId" name="disciplinaId" class="custom-select">
+     	 	    <option selected="selected">Please select the Disiplin...</option>
+     	        <option th:each="disciplina : ${disciplinas}"
+   				th:value="${disciplina.disciplinaId}"
+   			    th:utext="${ 'Id= '+disciplina.disciplinaId +' / '+
+   			    disciplina.titulo +' / '+ disciplina.diaDaSemana +' / '+
+   			    disciplina.turno }"></option>
+   		</select>
+    </div>
+   
+    <div class="form-group">
+        <label for="turmas"> Turma </label> 
+       	    <select id="turmaId" name="turmaId" class="custom-select">
+     	 	    <option selected="selected">Please select the class...</option>
+		        <option th:each="turma : ${turmas}"
+   				th:value="${turma.turmaId}"
+   			    th:utext="${ 'Id= '+turma.turmaId +' / '+
+   			    turma.turmaNome +' / '+ turma.periodo}"></option>		        
+		    </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="professorId"> Professor </label> 
+       	    <select id="professorId" name="professorId" class="custom-select">
+				 <option selected="selected">Please select the teacher...</option>
+				 <option th:each="professor : ${professores}"
+   			     th:value="${professor.professorId}"
+   				 th:utext="${ 'Id= '+professor.professorId +' - '+
+   				professor.nome +' '+ professor.sobrenome}"></option>
+   		  </select>
+    </div>
+   
+    <button type="submit" class="btn btn-lg btn-primary" style="color: green">Cadastrar</button>
+    <a href="listaAulas" class="btn btn-lg btn-primary"style="color: red">Cancelar</a>
+    <a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	</form>
+    DevWeb
+ </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

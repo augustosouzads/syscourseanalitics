@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Turmas</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+        <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+            <h1>Cadastro de Turmas</h1>
+        </div>
+
+	<form action="cadastrarTurma" method="post">
+         
+    <div class="form-group">
+        <label for="turmaNome">Nome da Turma </label> 
+        <input type="text" class="form-control" id="turmaNome" name="turmaNome" placeholder="Ex: 3ºB"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="periodo"> Período </label> 
+       	    <select id="periodo" name="periodo" class="custom-select">
+		        <option value="Noturno"> Noturno </option>
+		        <option value="Matutino"> Matutino </option>
+		        <option value="Vespertino"> Vespertino </option>
+      		</select>
+    </div>
+    
+    <button type="submit" class="btn btn-lg btn-primary" style="color: green">Cadastrar</button>
+    <a href="listaTurmas" class="btn btn-lg btn-primary"style="color: red">Cancelar</a>
+    <a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	</form>
+    
+ </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

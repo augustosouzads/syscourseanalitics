@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Disciplina</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="container">
+        <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+            <h1>Cadastro de disciplina</h1>
+        </div>
+
+	<form action="cadastrarDisciplina" method="post">
+    <div class="form-group">
+        <label for="titulo">Titulo </label> 
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo"/>
+    </div>
+     <div class="form-group">
+        <label for="quantidadeAluno">Quantida de Alunos</label> 
+        <input type="number" class="form-control" id="quantidadeAluno" name="quantidadeAluno" placeholder="Somente numeros"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="diaDaSemana"> Dias da Semana </label> 
+       	    <select id="diaDaSemana" name="diaDaSemana" class="custom-select">
+		        <option disabled>Please select...</option>
+		        <option value="Segunda-Feira"> Segunda-Feira </option>
+		        <option value="Terça-Feira"> Terça-Feira </option>
+		        <option value="Quarta-Feira"> Quarta-Feira </option>
+		        <option value="Quinta-Feira"> Quinta-Feira </option>
+		        <option value="Sexta-Feira"> Sexta-Feira </option>
+		        <option value="Sábado"> Sábado </option>
+		        <option value="EAD"> EAD </option>		             
+		    </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="turno"> Turno </label> 
+       	    <select id="turno" name="turno" class="custom-select">
+		        <option disabled>Please select...</option>
+		        <option value="Noturno"> Noturno </option>
+		        <option value="Matutino"> Matutino </option>
+		        <option value="Vespertino"> Vespertino </option>  
+		        <option value="EAD"> EAD </option>		             
+		    </select>
+    </div>
+   
+    <button type="submit" class="btn btn-lg btn-primary" style="color: green">Cadastrar</button>
+    <a href="listaDisciplinas" class="btn btn-lg btn-primary"style="color: red">Cancelar</a>
+    <a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	</form>
+    
+ </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

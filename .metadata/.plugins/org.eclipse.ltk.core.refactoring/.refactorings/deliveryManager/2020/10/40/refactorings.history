@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SwaggerConfig.java&apos; to &apos;analitics/src/main/java/com.system.course.analitics.config&apos;&#x0A;- Original project: &apos;deliveryManager&apos;&#x0A;- Destination element: &apos;analitics/src/main/java/com.system.course.analitics.config&apos;&#x0A;- Original element: &apos;br.com.delivery.manager.config.SwaggerConfig.java&apos;" description="Copy compilation unit" destination="=analitics/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.system.course.analitics.config" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;br.com.delivery.manager.config{SwaggerConfig.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1601680074702" units="1" version="1.0"/>
+</session>

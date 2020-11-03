@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Aulas</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Lista de Aulas</h1>
+    </div>
+
+<div id="listaDeAulas">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Aula.Id </th>
+            <th>Data</th>            
+            <th>Link da Aula</th>
+            <th>Disciplina</th>
+            <th>Turma</th>
+            <th>Periodo</th>
+            <th>Professor</th>
+            <th>Conteúdo</th>
+            <th>Matriculados</th>
+            <th>Conectados </th>                        
+        </tr>
+        </thead>
+        <tr th:each="aula : ${aulas}">
+            <td> <span th:text="${aula.aulaId}"></span> </td>
+            <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
+            <td> <span th:text="${aula.link}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+            <td> <span th:text="${aula.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.turmaId.periodo}"></span> </td>
+            <td> <span th:text="${aula.professorId.nome}"></span> </td> 
+            <td> <span th:text="${aula.conteudo}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
+            <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
+        </tr>
+    </table>
+</div>
+
+	<a href="aulaForm" class="btn btn-lg btn-primary">Cadastrar Nova</a>
+	<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	
+
+<hr/>
+	<form action="deletarAula" method="get">
+	 	<div class="form-group">
+        	  <label for="nome">Excluir Aula</label> 
+          	  <input type="text" class="form-control" id="aulaId" name="aulaId" placeholder="id"/>
+        </div>
+        	  <button type="submit" class="btn btn-lg btn-primary" style="color: red">Excluir Aula</button>
+    </form>
+<hr/>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

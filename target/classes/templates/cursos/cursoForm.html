@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Curso</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+        <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+            <h1>Cadastro de curso</h1>
+        </div>
+
+<form action="cadastrarCurso" method="post">
+    <div class="form-group">
+        <label for="cursoTitulo">Titulo do Curso </label> 
+        <input type="text" class="form-control" id="cursoTitulo" name="cursoTitulo" placeholder="Titulo do curso Ex: Análise e Desenvolvimento de Sistemas"/>
+    </div>
+     <div class="form-group">
+        <label for="sigla">Sigla do Curso</label> 
+        <input type="text" class="form-control" id="sigla" name="sigla" placeholder="somente 3 letras Ex.:ADS"/>
+    </div>
+      
+    <button type="submit" class="btn btn-lg btn-primary" style="color: green">Cadastrar</button>
+    <a href="listaCursos" class="btn btn-lg btn-primary"style="color: red">Cancelar</a>
+    <a href="/" class="btn btn-lg btn-primary">Inicio</a>
+</form>
+    
+ </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

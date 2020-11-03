@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Cursos</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Lista de cursos</h1>
+    </div>
+
+<div id="listaDeCursos">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id </th>
+            <th>Titulo do Curso </th>
+            <th>Sigla</th>
+        </tr>
+        </thead>
+        <tr th:each="curso : ${cursos}">
+            <td> <span th:text="${curso.cursoId}"></span> </td>
+            <td> <span th:text="${curso.cursoTitulo}"></span> </td>
+            <td> <span th:text="${curso.sigla}"></span> </td>
+        </tr>
+    </table>
+</div>
+
+	<a href="cursoForm" class="btn btn-lg btn-primary">Novo Curso</a>
+	<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	
+
+<hr/>
+	<form action="deletarCurso" method="get">
+	 	<div class="form-group">
+        	  <label for="nome">Excluir Curso</label> 
+          	  <input type="text" class="form-control" id="cursoId" name="cursoId" placeholder="id"/>
+        </div>
+        	  <button type="submit" class="btn btn-lg btn-primary" style="color: red">Excluir Curso</button>
+    </form>
+<hr/>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

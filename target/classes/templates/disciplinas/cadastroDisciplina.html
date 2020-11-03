@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Disciplina</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+        <div class="jumbotron" align="center" style="color:darkblue; margin-top: 10px ">
+            <h1>Cadastro de Disciplina</h1>
+        </div>
+  <form action="Curso" method="post">
+
+    <div class="form-group">
+        <label for="Curso"> Curso </label>
+		<select id="Curso" name="select" class="custom-select">
+	        <option value="0"> Selecione o Curso </option>
+	        <option value=""> Análise e Desenvolvimento de Sistemas </option>
+	        <option value=""> Ciência da Computação </option>
+	        <option value=""> Engenharia de Software </option>
+	    </select>
+    </div>
+
+    <div class="form-group">
+         <label for="Período">Período</label>
+	        <select id="Período" name="select" class="custom-select">
+		        <option value="0"> Selecione o Período </option>
+	    	    <option value=""> Manhã </option>
+	       		<option value=""> Tarde </option>
+	        	<option value=""> Noite </option>
+      		</select>
+    </div>
+    
+    <div class="form-group">
+        <label for=""> Dias da Semana </label> 
+       		<select id="Dias da Semana" name="select" class="custom-select">
+		        <option value="0"> Selecione o Dia </option>
+		        <option value=""> Segunda </option>
+		        <option value=""> Terça </option>
+		        <option value=""> Quarta </option>
+		        <option value=""> Quinta </option>
+		        <option value=""> Sexta </option>
+      		</select>
+    </div>
+    
+    <div class="form-group">
+        <label for="Turma">Turma</label> 
+          <select id="Turma" name="select" class="custom-select">
+		        <option value="0"> Selcione a Turma </option>
+		        <option value="">1°A</option>
+		        <option value="">1°B</option>
+		        <option value="">1°C</option>
+		        <option value="">1°D</option>
+		        <option value="">2°A</option>
+		        <option value="">2°B</option>
+		        <option value="">2°C</option>
+		        <option value="">2°D</option>
+		        <option value="">3°A</option>
+		        <option value="">3°B</option>
+		        <option value="">3°C</option>
+		        <option value="">3°D</option>
+     	 </select>
+    </div>
+    
+    <div class="form-group">
+       <label for="idDisciplina">ID Disciplina</label> 
+    	   <select id="idDisciplina" name="select" class="custom-select" onchange= "selecionarTexto('Disciplina')">
+		        <option value="ID0"> Selecione o ID </option>                  
+		        <option value="ID1"> 1 </option>
+		        <option value="ID2"> 2 </option>
+		        <option value="ID3"> 3 </option>
+		        <option value="ID4"> 4 </option>
+		        <option value="ID5"> 5 </option>
+    	  </select>
+    </div>
+    
+     <div class="form-group">                                                   
+        <label for="Disciplina">Disciplina</label>                                           
+     	   <select id="Disciplina" name="select" class="custom-select" onchange= "selecionarTexto2('idDisciplina')">                  
+		        <option value="ID0"> Selecione a Disciplina </option>
+		        <option value="ID1"> Análise e Projeto de Sistemas </option>
+		        <option value="ID2"> Banco de Dados </option>
+		        <option value="ID3"> Modelagem de Dados </option>
+		        <option value="ID4"> Programação Orientada a Objeto </option>
+		        <option value="ID5"> Programação de Dispositivos Móveis </option>
+    	  </select>
+	</div>
+	
+    <div class="form-group">
+        <label for="Quantidade de Alunos">Quantidade de Alunos</label> 
+        <input type="text" class="form-control" id="Quantidade de Alunos" name="Quantidade de Alunos" />
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-lg btn-primary">Alterar</button>
+    <button type="submit" class="btn btn-lg btn-primary">Limpar</button>
+    <button type="submit" class="btn btn-lg btn-primary" style="color: red ; ">Voltar</button>
+    
+	</form>
+    
+ </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+	
+	function selecionarTexto(elementId) {
+    	var cod = document.getElementById("idDisciplina").value;
+    	var elt = document.getElementById(elementId);
+	    var opt = elt.getElementsByTagName("option");
+	    
+	    for(var i = 0; i < opt.length; i++) {
+	      if(opt[i].value == cod) {
+	        opt[i].selected = true;
+	        elt.value = cod;
+	    }
+   	  }return null;
+	 }
+
+	function selecionarTexto2(elementId) {
+	    var cod = document.getElementById("Disciplina").value;
+	    var elt = document.getElementById(elementId);
+	    var opt = elt.getElementsByTagName("option");
+
+	    for(var i = 0; i < opt.length; i++) {
+	      if(opt[i].value == cod) {
+	        opt[i].selected = true;
+	        elt.value = cod;        
+	      }
+	  }return null;
+	}
+
+</script>
+</body>
+</html>

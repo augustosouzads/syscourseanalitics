@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Disciplinas</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Lista de disciplinas</h1>
+    </div>
+
+<div id="listaDeConvidados">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id </th>
+            <th>Titulo </th>
+            <th>Total de Alunos</th>
+            <th>Dia da semana</th>
+            <th>Turno</th>            
+        </tr>
+        </thead>
+        <tr th:each="disciplina : ${disciplinas}">
+            <td> <span th:text="${disciplina.disciplinaId}"></span> </td>
+            <td> <span th:text="${disciplina.titulo}"></span> </td>
+            <td> <span th:text="${disciplina.quantidadeAluno}"></span> </td>
+            <td> <span th:text="${disciplina.diaDaSemana}"></span> </td>
+            <td> <span th:text="${disciplina.turno}"></span> </td>
+        </tr>
+    </table>
+</div>
+
+	<a href="disciplinaForm" class="btn btn-lg btn-primary">Nova Disciplina</a>
+	<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	
+
+<hr/>
+	<form action="deletarDisciplina" method="get">
+	 	<div class="form-group">
+        	  <label for="nome">Excluir Disciplina</label> 
+          	  <input type="text" class="form-control" id="disciplinaId" name="disciplinaId" placeholder="id"/>
+        </div>
+        	  <button type="submit" class="btn btn-lg btn-primary" style="color: red">Excluir Disciplina</button>
+    </form>
+<hr/>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
