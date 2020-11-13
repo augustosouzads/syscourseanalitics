@@ -18,12 +18,14 @@
             <th>Turma ID</th>
             <th>Turma</th>
             <th>Período</th>
-        </tr>
+            <th>Curso</th>
+           </tr>
         </thead>
         <tr th:each="turma : ${turmas}">
             <td> <span th:text="${turma.turmaId}"></span> </td>
             <td> <span th:text="${turma.turmaNome}"></span> </td>
             <td> <span th:text="${turma.periodo}"></span> </td>
+            <td> <span th:text="${turma.cursoId.cursoTitulo}"></span> </td>
         </tr>
     </table>
 </div>

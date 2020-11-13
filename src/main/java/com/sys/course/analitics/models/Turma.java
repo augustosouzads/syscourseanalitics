@@ -39,19 +39,21 @@ public class Turma {
 		
 		@ManyToOne
 		@JoinColumn(name = "CURSO_id")
-		private Curso curso;
+		private Curso cursoId;
 		
 		@ManyToMany
 		@JoinTable(name = "TURMA_DISCIPLINA", joinColumns = @JoinColumn(name = "TURMA_id"),
 				  inverseJoinColumns = @JoinColumn(name = "DISCIPLINA_id"))
-		private List<Disciplina>disciplinas;
+		private List<Disciplina>disciplinaId;
 
 		public Turma(){
 		}
 		
-		public Turma(String turmaNome, String periodo){
-		        this.turmaNome = turmaNome;
-		        this.periodo = periodo;
+		public Turma(String turmaNome, String periodo,Curso cursoId){
+			this.turmaNome = turmaNome;
+			this.periodo = periodo;
+			this.cursoId = cursoId;
 		}
+
 
 }

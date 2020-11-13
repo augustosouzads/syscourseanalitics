@@ -30,10 +30,10 @@
             type: 'column'
         },
         title: {
-            text: 'Technology Popularity In India'
+            text: 'Participação de alunos conectados em aula online por disciplina'
         },
         subtitle: {
-            text: 'All Details is not true its a dummy Map'
+            text: 'Todos os detalhes são baseados em dados reais'
         },
         xAxis: {
             categories: [[${surveyMap.keySet()}]],
@@ -43,7 +43,7 @@
             min: 0,
             max:100,
             title: {
-                text: 'Technology rating [in %]'
+                text: 'Classificação de Participação dos alunos [em %]'
             }
         },
         tooltip: {
@@ -61,7 +61,7 @@
             }
         },
         series: [{
-            name: 'Technology',
+            name: 'Disciplinas',
             data: [[${surveyMap.values()}]]
         }]
     });

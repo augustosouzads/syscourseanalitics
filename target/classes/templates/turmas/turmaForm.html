@@ -12,6 +12,16 @@
         </div>
 
 	<form action="cadastrarTurma" method="post">
+	
+	<div class="form-group">
+        <label for="curso"> Curso </label> 
+       	    <select id="cursoId" name="cursoId" class="custom-select">
+		        <option selected="selected">Please select the course...</option>
+		        <option th:each="curso : ${cursos}"
+		        th:value="${curso.cursoId}"
+		        th:utext="${'ID= '+curso.cursoId+' / '+curso.cursoTitulo+' ('+curso.sigla+')'}"></option>		
+      		</select>
+    </div>
          
     <div class="form-group">
         <label for="turmaNome">Nome da Turma </label> 

@@ -34,15 +34,15 @@ public class Curso {
 	@ManyToMany
 	@JoinTable(name = "CURSO_DISCIPLINA", joinColumns = @JoinColumn(name = "CURSO_id"),
 			  inverseJoinColumns = @JoinColumn(name = "DISCIPLINA_id"))
-	private List<Disciplina>disciplinas;
+	private List<Disciplina>disciplinaId;
 	
-	@OneToMany(mappedBy = "curso")
-	private List<Turma>turmas;
+	@OneToMany(mappedBy = "cursoId")
+	private List<Turma>turmaId;
 
 	public Curso() {		
 	}
 	
-	 public Curso(String cursoTitulo, String sigla, List<Disciplina> disciplinas){
+	 public Curso(String cursoTitulo, String sigla){
 	        this.cursoTitulo = cursoTitulo;
 	        this.sigla = sigla;
 	}

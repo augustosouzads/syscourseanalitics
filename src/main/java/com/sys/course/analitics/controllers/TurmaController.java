@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sys.course.analitics.models.Professor;
+import com.sys.course.analitics.models.Curso;
 import com.sys.course.analitics.models.Turma;
+import com.sys.course.analitics.services.CursoService;
 import com.sys.course.analitics.services.TurmaService;
 
 @Controller
 public class TurmaController {
+	
+	@Autowired
+	private CursoService cursoService;
 
 	@Autowired
 	private TurmaService service;
@@ -20,22 +24,27 @@ public class TurmaController {
 	@RequestMapping("listaTurmas")
 	public String listaTurmas(Model model) {
 		
-		 Iterable<Turma> turmas = service.obterTurmas();//capturando os objetos do banco chamando a camada de serviço usando o ConvidadoService
-		 model.addAttribute("turmas",turmas);//deixando disponivel para a pagina atraves do Model
+		 Iterable<Turma> turmas = service.obterTurmas();
+		 model.addAttribute("turmas",turmas);
 		 
 		return "turmas/listaTurmas";
 	}
 	
 	@RequestMapping("turmaForm")
-	public String turmaForm() {
+	public String turmaForm(Model model) {
+		
+		Iterable<Curso> cursos = cursoService.obterCursos();
+		model.addAttribute("cursos",cursos);;
 		
 		return "turmas/turmaForm";
 	}
 
 	@RequestMapping(value = "cadastrarTurma", method = RequestMethod.POST)
-	public String cadastrarTurma(@RequestParam("turmaNome") String turmaNome, @RequestParam("periodo") String periodo, Model model ){
+	public String cadastrarTurma(@RequestParam("turmaNome") String turmaNome,
+			@RequestParam("periodo") String periodo,
+			@RequestParam("cursoId") Curso cursoId, Model model ){
 
-		    Turma novaTurmma = new Turma(turmaNome,periodo);
+		    Turma novaTurmma = new Turma(turmaNome,periodo,cursoId);
 		    
 		    service.salvarTurma(novaTurmma);
 		   

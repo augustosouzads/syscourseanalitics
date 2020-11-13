@@ -18,7 +18,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "DISCIPLINA")
 @Data
-@ToString(exclude = "aulas")
+@ToString(exclude = "cursoId")
 public class Disciplina {
 	
 	@Id
@@ -35,38 +35,36 @@ public class Disciplina {
 	@Column(name = "DIA_SEMANA")
 	private String diaDaSemana;
 	
-	@Column(name = "TURNO")
-	private String turno;
-	
+	@Column(name = "AULAS_id")
 	@OneToMany(mappedBy = "disciplinaId")
 	private List<Aula>aulas;
 
-	@ManyToMany(mappedBy = "disciplinas")
-	private List<Curso>cursos;
+	@ManyToMany(mappedBy = "disciplinaId")
+	private List<Curso>cursoId;
+
+	@ManyToMany(mappedBy = "disciplinaId")
+	private List<Turma>turmaId;
 	
-	@ManyToMany(mappedBy = "disciplinas")
-	private List<Turma>turmas;
 	
-    public Disciplina() {		
+	public Disciplina() {
+		
 	}
 	
 	 public Disciplina(String titulo, Integer quantidadeAluno , String diaDaSemana,
-			String turno,List<Turma>turmas, List<Aula> aulas, List<Curso> cursos){
+			List<Turma>turmaId, List<Curso> cursoId){
 	        
 		    this.titulo	= titulo;
 	        this.quantidadeAluno = quantidadeAluno;
 	        this.diaDaSemana = diaDaSemana;
-	        this.turno = turno;
-	        this.aulas = aulas;
-	        this.cursos = cursos;
-	        this.turmas = turmas;
+	        this.turmaId = turmaId;
+	        this.cursoId = cursoId;
 	   
 	    }
 	 
 //		@Override
 //		public String toString() {
 //			return "Disciplina [titulo=" + titulo + ", quantidadeAluno=" + quantidadeAluno + ", diaDaSemana=" + diaDaSemana + ","
-//					+ "aulas="+ aulas+",cursos=" + cursos + ",turmas=" + turmas + "]";
+//					+ "aulas="+ aulas+",cursoId=" + cursoId + ",turmaId=" + turmaId + "]";
 //		}
 
 }
