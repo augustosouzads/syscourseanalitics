@@ -53,10 +53,10 @@ public class DisciplinaController {
 	@RequestMapping(value = "cadastrarDisciplina", method = RequestMethod.POST)
 	public String cadastrarDisciplina(@RequestParam("titulo") String titulo, @RequestParam("quantidadeAluno")
 	Integer quantidadeAluno,@RequestParam("diaDaSemana") String diaDaSemana,
-	@RequestParam("cursoId") List<Curso> cursoId,
-	@RequestParam("turmaId") List<Turma> turmaId, Model model ){
+	@RequestParam("cursos") List<Curso> cursos,
+	@RequestParam("turmas") List<Turma> turmas, Model model ){
 
-		Disciplina novaDisciplina = new Disciplina(titulo,quantidadeAluno,diaDaSemana,turmaId,cursoId);
+		Disciplina novaDisciplina = new Disciplina(titulo,quantidadeAluno,diaDaSemana,turmas,cursos);
 		
 	    service.salvarDisciplina(novaDisciplina);
 	   

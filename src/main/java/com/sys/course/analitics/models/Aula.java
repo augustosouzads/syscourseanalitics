@@ -1,6 +1,7 @@
 package com.sys.course.analitics.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +13,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Table(name = "AULA")
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data	
 @ToString(exclude = "disciplinaId")
 public class Aula {
@@ -50,21 +56,21 @@ public class Aula {
 		@ManyToOne
 		@JoinColumn(name = "PROFESSOR_id")
 		private Professor professorId;
+		
+		public Aula(int quantidadeAlunos, LocalDate data, String link, String conteudo, Disciplina disciplinaId,
+				Turma turmaId, Professor professorId) {
 
-		public Aula(){
-		}
+			this.quantidadeAlunos = quantidadeAlunos;
+			this.data =data;
+			this.link = link;
+			this.conteudo = conteudo;
+			this.disciplinaId = disciplinaId;
+			this.turmaId = turmaId;
+			this.professorId = professorId;
 		
-		public Aula(int quantitadeAlunos, LocalDate data, String link,
-				String conteudo, Disciplina disciplinaId,Turma turmaId, Professor professorId){
-		        this.quantidadeAlunos = quantitadeAlunos;
-		        this.data = data;
-		        this.link = link;
-		        this.conteudo = conteudo;
-		        this.disciplinaId = disciplinaId;
-		        this.turmaId = turmaId;
-		        this.professorId = professorId;
 		}
-		
+
+
 //		@Override
 //		public String toString() {
 //			return "Aula [quantidadeAlunos=" + quantidadeAlunos + ", data=" + data + ", link=" + link + ","

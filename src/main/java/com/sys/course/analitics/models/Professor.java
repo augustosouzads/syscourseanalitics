@@ -10,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "PROFESSOR")
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Professor {
 	
@@ -37,14 +41,14 @@ public class Professor {
 	@OneToMany(mappedBy = "professorId")
 	private List<Aula>aulas;
 	
-    public Professor() {		
+	public Professor(String nome, String sobrenome, String email, String telefone) {
+ 
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
+		this.telefone = telefone;
+	
 	}
 	
-	 public Professor(String nome, String sobrenome, String email, String telefone){
-	        this.nome = nome;
-	        this.sobrenome = sobrenome;
-	        this.email = email;
-	        this.telefone = telefone;
-	    }
-	
+ 
 }
