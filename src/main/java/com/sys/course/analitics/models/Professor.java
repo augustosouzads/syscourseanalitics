@@ -38,9 +38,6 @@ public class Professor {
 	@Column(name = "TELEFONE")
 	private String telefone;
 	
-	@OneToMany(mappedBy = "professorId")
-	private List<Aula>aulas;
-	
 	public Professor(String nome, String sobrenome, String email, String telefone) {
  
 		this.nome = nome;

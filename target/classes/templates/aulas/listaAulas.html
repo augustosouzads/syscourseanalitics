@@ -19,6 +19,7 @@
             <th>Data</th>            
             <th>Link da Aula</th>
             <th>Disciplina</th>
+            <th>Curso</th>
             <th>Turma</th>
             <th>Periodo</th>
             <th>Professor</th>
@@ -32,6 +33,7 @@
             <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
             <td> <span th:text="${aula.link}"></span> </td>
             <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+            <td> <span th:text="${aula.turmaId.cursoId.sigla}"></span> </td>
             <td> <span th:text="${aula.turmaId.turmaNome}"></span> </td>
             <td> <span th:text="${aula.turmaId.periodo}"></span> </td>
             <td> <span th:text="${aula.professorId.nome}"></span> </td> 

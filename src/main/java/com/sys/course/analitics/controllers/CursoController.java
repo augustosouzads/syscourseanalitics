@@ -35,7 +35,7 @@ public class CursoController {
 	@RequestMapping("cursoForm")
 	public String cursosForm(Model model) {
 		
-		List<Disciplina> disciplinas = disciplinaService.obterDisciplinas();
+		Iterable<Disciplina> disciplinas = disciplinaService.obterDisciplinas();
 		model.addAttribute("disciplinas", disciplinas);
 		
 		return "cursos/cursoForm";

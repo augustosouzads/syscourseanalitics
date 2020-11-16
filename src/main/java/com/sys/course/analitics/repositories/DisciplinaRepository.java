@@ -1,12 +1,12 @@
 package com.sys.course.analitics.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sys.course.analitics.models.Disciplina;
 
 @Repository
-public interface DisciplinaRepository extends JpaRepository<Disciplina, Long>{
+public interface DisciplinaRepository extends CrudRepository<Disciplina, Long>{
 	
 
    	/*

@@ -7,7 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,27 +39,23 @@ public class Disciplina {
 	@Column(name = "DIA_SEMANA")
 	private String diaDaSemana;
 
-	@ManyToMany
-	private List<Curso> cursos;
+	@JoinColumn(name = "TURMA_id")
+	@ManyToOne
+	private Turma turma;
 
-	@ManyToMany
-	private List<Turma> turmas;
-
-	public Disciplina(String titulo, Integer quantidadeAluno, String diaDaSemana, List<Turma> turmas,
-			List<Curso> cursos) {
+	public Disciplina(String titulo, Integer quantidadeAluno, String diaDaSemana, Turma turma) {
 
 		this.titulo = titulo;
 		this.quantidadeAluno = quantidadeAluno;
 		this.diaDaSemana = diaDaSemana;
-		this.turmas = turmas;
-		this.cursos = cursos;
+		this.turma = turma;
 
 	}
 
 	@Override
 	public String toString() {
 		return "Disciplina [titulo=" + titulo + "," + " quantidadeAluno=" + quantidadeAluno + "," + " diaDaSemana="
-				+ diaDaSemana + "," + "cursoId=" + cursos + "," + "turmaId=" + turmas + "]";
+				+ diaDaSemana + "," + "turma=" + turma+ "]";
 	}
 
 }

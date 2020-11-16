@@ -61,7 +61,7 @@ public class AulaController {
 	@RequestMapping("aulaForm")
 	public String aulaForm(Model model) {
 			
-	List<Disciplina> disciplinas = disciplinaService.obterDisciplinas();
+	Iterable<Disciplina> disciplinas = disciplinaService.obterDisciplinas();
 	model.addAttribute("disciplinas",disciplinas);
 	
 	Iterable<Curso> cursos = cursoService.obterCursos();

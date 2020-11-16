@@ -20,8 +20,9 @@
             <th>Titulo </th>
             <th>Inscritos</th>
             <th>Dia da semana</th>
-            <th>Curso Id</th>
-            <th>Turma Id</th>
+            <th>Curso </th>
+            <th>Turma </th>
+            <th>Periodo</th>            
         </tr>
         </thead>
         <tr th:each="disciplina : ${disciplinas}">
@@ -29,8 +30,9 @@
             <td> <span th:text="${disciplina.titulo}"></span> </td>
             <td> <span th:text="${disciplina.quantidadeAluno}"></span> </td>
             <td> <span th:text="${disciplina.diaDaSemana}"></span> </td>
-            <td> <span th:text="${disciplina.cursos}"></span> </td>
-            <td> <span th:text="${disciplina.turmas}"></span> </td>  
+            <td> <span th:text="${disciplina.turma.cursoId.sigla}"></span> </td>
+            <td> <span th:text="${disciplina.turma.turmaNome}"></span> </td>  
+            <td> <span th:text="${disciplina.turma.periodo}"></span> </td>  
         </tr>
     </table>
 </div>

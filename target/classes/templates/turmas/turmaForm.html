@@ -19,7 +19,7 @@
 		        <option selected="selected">Please select the course...</option>
 		        <option th:each="curso : ${cursos}"
 		        th:value="${curso.cursoId}"
-		        th:utext="${'ID= '+curso.cursoId+' / '+curso.cursoTitulo+' ('+curso.sigla+')'}"></option>		
+		        th:utext="${'('+curso.sigla+') - '+curso.cursoTitulo}"></option>		
       		</select>
     </div>
          

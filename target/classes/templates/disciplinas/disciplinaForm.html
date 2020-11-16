@@ -19,24 +19,23 @@
 
 	<form action="cadastrarDisciplina" method="post">
 	
-	<div class="form-group">
-        <label for="cursos"> Curso </label> 
-       	    <select id="cursos" name="cursos" class="custom-select">
+	<!--  <div class="form-group">
+        <label for="curso"> Curso </label> 
+       	    <select id="curso" name="curso" class="custom-select">
 		        <option selected="selected">Please select the course...</option>
 		        <option th:each="curso : ${cursos}"
 		        th:value="${curso.cursoId}"
-		        th:utext="${'ID= '+curso.cursoId+' / '+curso.cursoTitulo+' ('+curso.sigla+')'}"></option>		
+		        th:utext="${'('+curso.sigla+') - '+curso.cursoTitulo}"></option>		
       		</select>
-    </div>
+    </div>-->
 	
 	<div class="form-group">
-        <label for="turmas"> Turma </label> 
-       	    <select id="turmas" name="turmas" class="custom-select">
+        <label for="turma"> Turma </label> 
+       	    <select id="turma" name="turma" class="custom-select">
      	 	    <option selected="selected">Please select the class...</option>
 		        <option th:each="turma : ${turmas}"
    				th:value="${turma.turmaId}"
-   			    th:utext="${ 'Id= '+turma.turmaId +' / '+
-   			    turma.turmaNome +' / '+ turma.periodo}"></option>		        
+   			    th:utext="${turma.turmaNome +' - '+turma.cursoId.sigla+' ('+turma.periodo+')'}"></option>		        
 		    </select>
     </div>
     <div class="form-group">
@@ -44,7 +43,7 @@
         <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo"/>
     </div>
      <div class="form-group">
-        <label for="quantidadeAluno">Quantida de Alunos</label> 
+        <label for="quantidadeAluno">Nº de Matriculados</label> 
         <input type="number" class="form-control" id="quantidadeAluno" name="quantidadeAluno" placeholder="Somente numeros"/>
     </div>
     

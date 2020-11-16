@@ -31,7 +31,7 @@ public class DisciplinaController {
 	@RequestMapping("listaDisciplinas")
 	public String listaDisciplinas(Model model) {
 		
-		 List<Disciplina> disciplinas = service.obterDisciplinas();
+		 Iterable<Disciplina> disciplinas = service.obterDisciplinas();
 		 model.addAttribute("disciplinas",disciplinas);
 		 
 		return "disciplinas/listaDisciplinas";
@@ -53,14 +53,13 @@ public class DisciplinaController {
 	@RequestMapping(value = "cadastrarDisciplina", method = RequestMethod.POST)
 	public String cadastrarDisciplina(@RequestParam("titulo") String titulo, @RequestParam("quantidadeAluno")
 	Integer quantidadeAluno,@RequestParam("diaDaSemana") String diaDaSemana,
-	@RequestParam("cursos") List<Curso> cursos,
-	@RequestParam("turmas") List<Turma> turmas, Model model ){
+	@RequestParam("turma") Turma turma, Model model ){
 
-		Disciplina novaDisciplina = new Disciplina(titulo,quantidadeAluno,diaDaSemana,turmas,cursos);
+		Disciplina novaDisciplina = new Disciplina(titulo,quantidadeAluno,diaDaSemana,turma);
 		
 	    service.salvarDisciplina(novaDisciplina);
 	   
-		List<Disciplina> disciplinas = service.obterDisciplinas();
+	    Iterable<Disciplina> disciplinas = service.obterDisciplinas();
 		    
 	    model.addAttribute("disciplinas", disciplinas); 
 		
@@ -72,7 +71,7 @@ public class DisciplinaController {
 		 
 		service.deletarDisciplina(disciplinaId);
 		
-		List<Disciplina> disciplinas = service.obterDisciplinas();
+		Iterable<Disciplina> disciplinas = service.obterDisciplinas();
 	    
 	    model.addAttribute("disciplinas", disciplinas); 
 

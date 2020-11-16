@@ -1,11 +1,8 @@
 package com.sys.course.analitics.services;
 
-import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sys.course.analitics.models.Disciplina;
 import com.sys.course.analitics.repositories.DisciplinaRepository;
 
@@ -15,13 +12,13 @@ public class DisciplinaService {
 	@Autowired
 	private DisciplinaRepository repository;
 
-	public List<Disciplina> obterDisciplinas(){
-		List<Disciplina> disciplinas = repository.findAll();
+	public Iterable<Disciplina> obterDisciplinas(){
+		Iterable<Disciplina> disciplinas = repository.findAll();
 		return disciplinas;
 	}
 	
 	public void salvarDisciplina (Disciplina disciplina) {
-		repository.saveAndFlush(disciplina);
+		repository.save(disciplina);
 	}
 	
 	public void deletarDisciplina(Long disciplinaId) {
@@ -30,7 +27,7 @@ public class DisciplinaService {
 	
 	public Disciplina atualizarDisciplina (Long disciplinaId, Disciplina disciplina) {
 		disciplina.setDisciplinaId(disciplinaId);
-		repository.saveAndFlush(disciplina);
+		repository.save(disciplina);
 		return new Disciplina();
 	}
 	
