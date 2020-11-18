@@ -36,14 +36,14 @@
             text: 'Todos os detalhes são baseados em dados reais'
         },
         xAxis: {
-            categories: [[${surveyMap.keySet()}]],
+            categories: [[${Data}]],
             crosshair: true
         },
         yAxis: {
             min: 0,
-            max:100,
+            max:25,
             title: {
-                text: 'Classificação de Participação dos alunos [em %]'
+                text:  [[${Conectados}]]
             }
         },
         tooltip: {
@@ -61,8 +61,11 @@
             }
         },
         series: [{
-            name: 'Disciplinas',
-            data: [[${surveyMap.values()}]]
+            name: 'Matriculados',
+            data: [[${Matriculados}]]
+        },{
+            name: 'Conectados',
+            data: [[${Conectados}]]
         }]
     });
     });

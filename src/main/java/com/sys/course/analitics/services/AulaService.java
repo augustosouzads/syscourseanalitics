@@ -1,7 +1,10 @@
 package com.sys.course.analitics.services;
+import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sys.course.analitics.models.Aula;
 import com.sys.course.analitics.repositories.AulaRepository;
 
@@ -33,6 +36,10 @@ public class AulaService {
 	public Optional<Aula> acharAulaPorId(Long aulaId) {
 		Optional<Aula> aula = repository.findById(aulaId);
 		return aula;
+	}
+	
+	public List<Aula> relatorioDeAulaPorDisciplina(Long disciplina) {
+		return repository.obterAulasPorDisciplina(disciplina);
 	}
 }
 

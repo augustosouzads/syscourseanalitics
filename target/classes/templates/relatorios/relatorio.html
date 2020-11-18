@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<!--  xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+	  layout:decorator="layout">-->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Relatório html</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Relatorio de aulas por disciplina</h1>
+    </div>
+<div id="relatorioHtml">    
+	<!--  <th:block layout:fragment="content">-->
+		<form th:action="@{/reports/html}" th:method="get">
+			<select name="disciplina">
+				<option>Select</option>
+				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.disciplinaId}" th:text="${disciplina.titulo}"></option>
+			</select>
+			<button type="submit" class="btn btn-lg btn-primary"
+				style="color: green">Gerar Relattório</button>
+			<a href="/" class="btn btn-lg btn-primary">Inicio</a>				
+		</form>
+		
+		<div id="RelatorioDeAulasPorDisciplina">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Data</th>            
+            <th>Conectados</th>
+            <th>Matriculados</th>
+            <th>Turma</th>
+            <th>Curso</th>
+            <th>Titulo</th>                                  
+        </tr>
+        </thead>
+        <tr th:each="aula : ${list}">
+            <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
+            <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
+            <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
+            <td> <span th:text="${aula.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.turmaId.cursoId.sigla}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+        </tr>
+    </table>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>	
+	<!-- </th:block> -->
+
+ </div>
+</body>
+</html>
