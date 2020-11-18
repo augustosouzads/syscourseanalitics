@@ -33,7 +33,7 @@ public class DisciplinaService {
 		return new Disciplina();
 	}
 	
-	public Optional<Disciplina> acharProfessorPorId(Long disciplinaId) {
+	public Optional<Disciplina> acharDisciplinaPorId(Long disciplinaId) {
 		Optional<Disciplina> disciplina = repository.findById(disciplinaId);
 		return disciplina;
 	}

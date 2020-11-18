@@ -41,6 +41,10 @@ public class AulaService {
 	public List<Aula> relatorioDeAulaPorDisciplina(Long disciplina) {
 		return repository.obterAulasPorDisciplina(disciplina);
 	}
+	
+	public List<Aula> relatorioDeAulaPorDisciplinaTitulo(String disciplina){
+		return repository.obterAulasPorDisciplinaTitulo(disciplina);
+	}
 }
 
 

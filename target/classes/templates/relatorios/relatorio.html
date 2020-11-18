@@ -15,13 +15,14 @@
     </div>
 <div id="relatorioHtml">    
 	<!--  <th:block layout:fragment="content">-->
+				
 		<form th:action="@{/reports/html}" th:method="get">
 			<select name="disciplina">
 				<option>Select</option>
 				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.disciplinaId}" th:text="${disciplina.titulo}"></option>
 			</select>
 			<button type="submit" class="btn btn-lg btn-primary"
-				style="color: green">Gerar Relattório</button>
+				style="color: green">Gerar Relatório</button>
 			<a href="/" class="btn btn-lg btn-primary">Inicio</a>				
 		</form>
 		
@@ -46,6 +47,15 @@
             <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
         </tr>
     </table>
+     <form th:action="@{/reports/graficoDeBarrasPorDisciplinaTitulo}" th:method="get">
+			<select name="disciplina">
+				<option>Select</option>
+				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.titulo}" th:text="${disciplina.titulo}"></option>
+			</select>
+			<button type="submit" class="btn btn-lg btn-primary"
+				style="color: green">Visualizar Dados</button>
+			<a href="/" class="btn btn-lg btn-primary">Inicio</a>				
+		</form>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

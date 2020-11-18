@@ -13,6 +13,29 @@
 <body>
 	<div class="container">
 		<h1 align="center">Análise de Dados </h1>
+
+		<div id="RelatorioDeAulasPorDisciplina">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Data</th>            
+            <th>Conectados</th>
+            <th>Matriculados</th>
+            <th>Turma</th>
+            <th>Curso</th>
+            <th>Titulo</th>
+        </tr>
+        </thead>
+        <tr th:each="aula : ${aulas}">
+            <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
+            <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
+            <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
+            <td> <span th:text="${aula.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.turmaId.cursoId.sigla}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+        </tr>
+   </table>
+  </div>
 	
 		<div id="container"
 			style="width: 550px; height: 400px; margin: 0 auto"></div>
@@ -30,23 +53,23 @@
             type: 'column'
         },
         title: {
-            text: 'Participação de alunos conectados em aula online por disciplina'
+            text: 'Visualização dos Dados'
         },
         subtitle: {
-            text: ""
+            text: "Dados registrados pelos professores.\nFonte:Blackboard Colaborate Ultra "
         },
         xAxis: [{
-            categories: [[${Data}]],
+            categories: [[${curso}]],
             crosshair: true
         },{
-            categories: [[${Conectados}]],
+            categories: [[${conectados}]],
             crosshair: true
         }],
         yAxis: {
             min: 0,
             max:25,
             title: {
-                text: 'Salve ' + [[${Conectados}]]
+                text: "Classicação de Audiência das Aulas por disciplina"
             }
         },
         tooltip: {
@@ -65,16 +88,17 @@
         },
         series: [{
             name: 'Matriculados',
-            data: [[${Matriculados}]]
+            data: [[${matriculados}]]
         },{
-            name: 'Conectados',
-            data: [[${Conectados}]]
+            name: 'Conectados',           
+            data: [[${conectados}]]
         }]
     });
     });
 </script>
 	<div>
-		<h3 align="center"> System Course Analitcs Technology Line Graph</h3>
+	    <ul><li><a href="/reports/html">Consulatar outra Disciplina</a></li></ul>
+		<h4 align="center"> System Course Analitcs Technology Line Graphs</h4>		
 		<a href="/" class="btn btn-lg btn-primary">Inicio</a>
 	</div>
   </div>	
