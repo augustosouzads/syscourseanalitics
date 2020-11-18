@@ -30,8 +30,8 @@
             <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
             <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
             <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
-            <td> <span th:text="${aula.turmaId.turmaNome}"></span> </td>
-            <td> <span th:text="${aula.turmaId.cursoId.sigla}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.turmaId.cursoId.sigla}"></span> </td>
             <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
         </tr>
    </table>

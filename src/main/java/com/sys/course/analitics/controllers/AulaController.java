@@ -79,11 +79,11 @@ public class AulaController {
 	@RequestMapping(value = "cadastrarAula", method = RequestMethod.POST)
 	public String cadastrarAula(@RequestParam("quantidadeAlunos")int quantidadeAlunos,@RequestParam("data")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate data,@RequestParam("link") String link,@RequestParam("conteudo") String conteudo,
-	@RequestParam("disciplinaId")Disciplina disciplinaId,@RequestParam("turmaId")Turma turmaId,
+	@RequestParam("disciplinaId")Disciplina disciplinaId,
 	@RequestParam("professorId")Professor professorId, Model model ){
 			
 		    Aula novaAula = new Aula(quantidadeAlunos, data,link, conteudo, disciplinaId,
-		  	turmaId, professorId);
+		   professorId);
 		    
 		    service.salvarAula(novaAula);
 		   

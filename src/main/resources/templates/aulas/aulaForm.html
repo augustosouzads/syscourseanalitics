@@ -57,11 +57,11 @@
      	 	    <option selected="selected">Please select the Disiplin...</option>
      	        <option th:each="disciplina : ${disciplinas}"
    				th:value="${disciplina.disciplinaId}"
-   			    th:utext="${ disciplina.titulo +' (' +disciplina.diaDaSemana+ ')'}"></option>
+   			    th:utext="${'('+disciplina.turmaId.turmaNome+ ' '+disciplina.turmaId.periodo+' '+disciplina.turmaId.cursoId.sigla+') '+ disciplina.titulo +' (' +disciplina.diaDaSemana+ ')'}"></option>
    		</select>
     </div>
    
-     <div class="form-group">
+ <!--      <div class="form-group">
         <label for="turmas"> Turma </label> 
        	    <select id="turmaId" name="turmaId" class="custom-select">
      	 	    <option selected="selected">Please select the class...</option>
@@ -70,7 +70,7 @@
    			    th:utext="${'('+turma.cursoId.sigla+') '+turma.turmaNome +' ('+turma.periodo+ ')'}"></option>		        
 		    </select>
     </div>
-  
+-->  
     <div class="form-group">
         <label for="professorId"> Professor </label> 
        	    <select id="professorId" name="professorId" class="custom-select">

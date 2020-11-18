@@ -37,21 +37,21 @@ public class Disciplina {
 
 	@JoinColumn(name = "TURMA_id")
 	@ManyToOne
-	private Turma turma;
+	private Turma turmaId;
 
-	public Disciplina(String titulo, Integer quantidadeAluno, String diaDaSemana, Turma turma) {
+	public Disciplina(String titulo, Integer quantidadeAluno, String diaDaSemana, Turma turmaId) {
 
 		this.titulo = titulo;
 		this.quantidadeAluno = quantidadeAluno;
 		this.diaDaSemana = diaDaSemana;
-		this.turma = turma;
+		this.turmaId = turmaId;
 
 	}
 
 	@Override
 	public String toString() {
 		return "Disciplina [titulo=" + titulo + "," + " quantidadeAluno=" + quantidadeAluno + "," + " diaDaSemana="
-				+ diaDaSemana + "," + "turma=" + turma+ "]";
+				+ diaDaSemana + "," + "turma=" + turmaId+ "]";
 	}
 
 }

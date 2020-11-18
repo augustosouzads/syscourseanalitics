@@ -1,4 +1,5 @@
 package com.sys.course.analitics.services;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,10 @@ public class AulaService {
 	
 	public List<Aula> relatorioDeAulaPorDisciplinaTitulo(String disciplina){
 		return repository.obterAulasPorDisciplinaTitulo(disciplina);
+	}
+	
+	public List<Aula> relatorioDeAulaPorPeriodo(LocalDate dataInicial,LocalDate dataFinal){
+		return repository.obterAulasPorPeriodo(dataInicial, dataFinal);
 	}
 }
 

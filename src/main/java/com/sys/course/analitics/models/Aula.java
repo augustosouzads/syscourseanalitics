@@ -50,22 +50,17 @@ public class Aula {
 		private Disciplina disciplinaId;
 		
 		@ManyToOne
-		@JoinColumn(name = "TURMA_id")
-		private Turma turmaId;
-		
-		@ManyToOne
 		@JoinColumn(name = "PROFESSOR_id")
 		private Professor professorId;
 		
 		public Aula(int quantidadeAlunos, LocalDate data, String link, String conteudo, Disciplina disciplinaId,
-				Turma turmaId, Professor professorId) {
+				 Professor professorId) {
 
 			this.quantidadeAlunos = quantidadeAlunos;
 			this.data =data;
 			this.link = link;
 			this.conteudo = conteudo;
 			this.disciplinaId = disciplinaId;
-			this.turmaId = turmaId;
 			this.professorId = professorId;
 		
 		}
