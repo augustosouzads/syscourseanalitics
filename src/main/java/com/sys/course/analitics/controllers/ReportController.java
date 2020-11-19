@@ -35,19 +35,14 @@ public class ReportController {
 	}
 	
 	@GetMapping("/relatorioPorDisciplina")
-	public String relatorioPorDisciplina() {
+	public String relatorioPorDisciplina(Model model) {
+		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
 			return "relatorios/relatorioPorDisciplina";
 	}
 	
 	@GetMapping("/html")
-	public String html(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
-		
-		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
-		if (disciplina == null) {
-			return "relatorios/relatorio2";
-		}
-		model.addAttribute("list", service.relatorioDeAulaPorDisciplina(disciplina));
-		return "relatorios/relatorio2";
+	public String html() {
+		return "relatorios/relatorioIndex";
 	}
 	
 	@GetMapping("/graficoDeBarras")
@@ -84,7 +79,7 @@ public class ReportController {
 	public String graficoDeBarrasPorDisciplinaTitulo(@RequestParam(required = false, value = "disciplina") String disciplina, Model model) {
 		
 		if (disciplina == null) {
-			return "relatorios/relatorio";
+			return "relatorios/relatorioIndex";
 		}
 		List<Aula> list = service.relatorioDeAulaPorDisciplinaTitulo(disciplina);
 		model.addAttribute("aulas", list);
