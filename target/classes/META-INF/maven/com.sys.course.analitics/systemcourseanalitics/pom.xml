@@ -19,18 +19,18 @@
   
   <dependencies>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-    	</dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+   	</dependency>
         
-        <dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-starter-actuator</artifactId>
-    	</dependency>
+    <dependency>
+       	<groupId>org.springframework.boot</groupId>
+       	<artifactId>spring-boot-starter-actuator</artifactId>
+   	</dependency>
                        
     <dependency>
-    		<groupId>org.springframework.boot</groupId>
-    		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+   		<groupId>org.springframework.boot</groupId>
+   		<artifactId>spring-boot-starter-thymeleaf</artifactId>
 	</dependency>
 
 	<dependency>
@@ -59,7 +59,12 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 	</dependency>
-			
+	<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>itextpdf</artifactId>
+	    <version>5.5.13.2</version>
+	</dependency>		
   </dependencies>
   
  <build>

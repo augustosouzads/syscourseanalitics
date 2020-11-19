@@ -1,11 +1,15 @@
 package com.sys.course.analitics.controllers;
 
+import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +22,7 @@ import com.sys.course.analitics.models.Disciplina;
 import com.sys.course.analitics.models.Turma;
 import com.sys.course.analitics.services.AulaService;
 import com.sys.course.analitics.services.DisciplinaService;
+import com.sys.course.analitics.utils.PDFUtils;
 
 @Controller
 @RequestMapping("/reports")
@@ -116,6 +121,20 @@ public class ReportController {
 		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
 		model.addAttribute("disciplina", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTitulo).collect(Collectors.toList()));
 		return "graficos/graficoBarraPorPeriodo";
+	}
+	
+	@GetMapping("/pdfPorTituloDisciplina")
+	public ResponseEntity<InputStreamResource> pdfPorTituloDisciplina(@RequestParam(required = false, value = "disciplina") String disciplina, Model model){
+		
+		if (disciplina == null) {
+			return null;
+		}
+		List<Aula> list = service.relatorioDeAulaPorDisciplinaTitulo(disciplina);
+		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
+		System.out.println("preenchi reelatorio");
+	
+	return ResponseEntity.ok().header("Content-Disposition", "inline; filename=report.pdf").contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(pdf));	
+		
 	}
 
 }
