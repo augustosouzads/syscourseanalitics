@@ -45,6 +45,12 @@ public class ReportController {
 		return "relatorios/relatorioIndex";
 	}
 	
+	@GetMapping("/relatorioPorPeriodo")
+	public String relatorioPorPeriodo() {
+		return "relatorios/relatorioPorPeriodo";		
+	}
+	
+	
 	@GetMapping("/graficoDeBarras")
 	public String graficoDeBarras(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
 		

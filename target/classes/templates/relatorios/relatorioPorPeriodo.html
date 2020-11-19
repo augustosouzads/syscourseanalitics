@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://thymeleaf.org"
+       xmlns: layout="http://www.ultraq.net.nz/thymeleaf/layout">
+       
+<head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+     <title> Relatório por Periodo  </title>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Relatório por Periodo</h1>
+    </div >
+    
+    <h2 align="center" style="color: gray">Selecione o período em que deseja realizar a consulta </h2>
+    
+    <div class="jumbotron" style="color:black ; margin-top: 10px ">
+    
+      <form th:action="@{/reports/graficoDeBarrasPorPeriodo}" th:method="get">
+		
+		<div class="form-group">
+		
+		<div>
+			<label for="dataInicial">Data inicial: </label> 
+	        <input type="date" class="form-control" id="dataInicial" name="dataInicial" />
+	        
+	        <label for="dataInicial">Data final:</label> 
+	        <input type="date" class="form-control" id="dataFinal" name="dataFinal" />
+        </div>
+		
+			<!--  <select name="disciplina" class="">
+				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.titulo}" th:text="${disciplina.titulo}"></option>
+			</select>
+			-->
+	    </div>
+	    <hr class="my-4">
+			<button type="submit" class="btn btn-lg btn-primary"
+			style="color: black">Visualizar Dados</button>
+			<a href="html" class="btn btn-lg btn-primary"
+		    style="color: red">Cancelar</a>				
+			<a href="/" class="btn btn-lg btn-primary">Inicio</a>				
+		</form>
+	</div >
+<!--     <form method="post">
+   <div>
+   Nome: <input type="text" value=" " name="nome"/>
+  </div>
+   Local: <input type="text" value=" " name= "local"/>
+   Data: <input type="text" value=" " name="data"/>
+   Horario: <input type="text" value=" " name="horario"/>
+   
+   <button type="submit"> Salvar </button>
+   
+   </form>
+ -->  
+</div>  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>  
