@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -99,11 +100,12 @@ public class ReportController {
 	}
 	
 	@GetMapping("/graficoDeBarrasPorPeriodo")
-	public String graficoDeBarrasPorPeriodo(@RequestParam(required = false, value = "dataInicial") LocalDate dataInicial,
-			@RequestParam(required = false, value = "dataFinal") LocalDate dataFinal,Model model) {
+	public String graficoDeBarrasPorPeriodo(@RequestParam("dataInicial")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataInicial,@RequestParam("dataFinal")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataFinal,Model model) {
 		
 		if ((dataFinal == null) || (dataInicial == null)){
-			return "relatorios/relatorio";
+			return "relatorios/relatorioIndex";
 		}
 		List<Aula> list = service.relatorioDeAulaPorPeriodo(dataInicial, dataFinal);
 		model.addAttribute("aulas", list);
