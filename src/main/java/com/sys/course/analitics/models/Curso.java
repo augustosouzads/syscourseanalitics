@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +27,13 @@ public class Curso {
 	private Long cursoId;
 
 	@Column(name = "CURSO_TITULO")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String cursoTitulo;
 
 	@Column(name = "SIGLA")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String sigla;
 
 	public Curso(String cursoTitulo, String sigla) {

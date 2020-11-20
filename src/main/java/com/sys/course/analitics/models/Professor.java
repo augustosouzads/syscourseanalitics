@@ -6,9 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.lang.NonNullFields;
-
+import javax.validation.constraints.NotEmpty;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,15 +25,23 @@ public class Professor {
 	private Long professorId;
 	
 	@Column(name = "NOME")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String nome;
 	
 	@Column(name = "SOBRENOME")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String sobrenome;
 
 	@Column(name = "EMAIL")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String email;
 
 	@Column(name = "TELEFONE")
+	@NotNull
+	@NotEmpty(message = "Campo não pode estar vazio")
 	private String telefone;
 	
 	public Professor(String nome, String sobrenome, String email, String telefone) {
