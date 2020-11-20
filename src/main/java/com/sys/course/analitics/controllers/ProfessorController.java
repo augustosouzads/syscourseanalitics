@@ -1,11 +1,19 @@
 package com.sys.course.analitics.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sys.course.analitics.models.Professor;
 import com.sys.course.analitics.services.ProfessorService;
@@ -32,18 +40,29 @@ public class ProfessorController {
 	}
 
 	@RequestMapping(value = "cadastrarProfessor", method = RequestMethod.POST)
-	public String cadastrarProfessor(@RequestParam("nome") String nome, @RequestParam("sobrenome") String sobrenome,@RequestParam("email") String email,
-		    @RequestParam("telefone") String telefone, Model model ){
-
-		    Professor novoProfessor = new Professor(nome, sobrenome, email, telefone);
-		    
-		    service.salvarProfessor(novoProfessor);
-		   
-     	    Iterable<Professor> professores = service.obterProfessores(); 
-		    
-		    model.addAttribute("professores", professores); 
+	public ModelAndView cadastrarProfessor(@Valid Professor professor,BindingResult bindingResult){
 		
-			return "professores/listaProfessores";
+
+		if(bindingResult.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("professores/professorForm");
+			Iterable<Professor> professores = service.obterProfessores(); 
+			modelAndView.addObject("professores",professores);
+			modelAndView.addObject("professorObj",professor);
+			
+			List<String> msg =  new ArrayList<String>();
+			for(ObjectError objectError : bindingResult.getAllErrors()) {
+				msg.add(objectError.getDefaultMessage());
+			}
+		    
+			modelAndView.addObject("msg",msg);
+			return modelAndView;
+		}			
+			service.salvarProfessor(professor);	
+			ModelAndView modelAndView = new ModelAndView("professores/listaProfessores");
+			Iterable<Professor> professores = service.obterProfessores(); 
+			modelAndView.addObject("professores",professores);
+			
+			return modelAndView;
 	}
 	
 	@RequestMapping(value = "deletarProfessor", method = RequestMethod.GET)

@@ -35,7 +35,7 @@ public class Disciplina {
 
 	@Column(name = "TITULO")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops esquecemos o titulo da disciplina")
 	private String titulo;
 
 	@Column(name = "QTDE_ALUNO")
@@ -52,8 +52,6 @@ public class Disciplina {
 
 	@JoinColumn(name = "TURMA_id")	
 	@ManyToOne
-	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
 	private Turma turmaId;
 
 	public Disciplina(String titulo, Integer quantidadeAluno, String diaDaSemana, Turma turmaId) {

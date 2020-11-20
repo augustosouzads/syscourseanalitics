@@ -26,22 +26,22 @@ public class Professor {
 	
 	@Column(name = "NOME")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos o Nome!")
 	private String nome;
 	
 	@Column(name = "SOBRENOME")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos o sobrenome")
 	private String sobrenome;
 
 	@Column(name = "EMAIL")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos o email")
 	private String email;
 
 	@Column(name = "TELEFONE")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos o telefone")
 	private String telefone;
 	
 	public Professor(String nome, String sobrenome, String email, String telefone) {

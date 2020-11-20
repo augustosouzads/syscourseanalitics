@@ -23,17 +23,17 @@ public class Curso {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CURSO_id")
+	@Column(name = "CURSO_id")	
 	private Long cursoId;
 
 	@Column(name = "CURSO_TITULO")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos o Titulo do curso!")
 	private String cursoTitulo;
 
 	@Column(name = "SIGLA")
 	@NotNull
-	@NotEmpty(message = "Campo não pode estar vazio")
+	@NotEmpty(message = "Ops! esquecemos a Sigla do Curso")
 	private String sigla;
 
 	public Curso(String cursoTitulo, String sigla) {

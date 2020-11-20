@@ -47,29 +47,25 @@ public class Aula {
 		@Column(name = "DATA")
 		@DateTimeFormat(pattern = "dd/MM/yyyy")
 		@NotNull
-		@NotEmpty(message = "Campo não pode estar vazio")
+		@NotEmpty(message = "Campo data pode estar vazio")
 		private LocalDate data;
 		
 		@Column(name = "LINK")
 		@NotNull
-		@NotEmpty(message = "Campo não pode estar vazio")
+		@NotEmpty(message = "Campo link pode estar vazio")
 		private String link;
 
 		@Column(name = "CONTEUDO")
 		@NotNull
-		@NotEmpty(message = "Campo não pode estar vazio")
+		@NotEmpty(message = "Campo conteudo pode estar vazio")
 		private String conteudo;
 				
 		@ManyToOne
 		@JoinColumn(name = "DISCIPLINA_id")
-		@NotNull
-		@NotEmpty(message = "Campo não pode estar vazio")
 		private Disciplina disciplinaId;
 		
 		@ManyToOne
 		@JoinColumn(name = "PROFESSOR_id")
-		@NotNull
-		@NotEmpty(message = "Campo não pode estar vazio")
 		private Professor professorId;
 		
 		public Aula(int quantidadeAlunos, LocalDate data, String link, String conteudo, Disciplina disciplinaId,

@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,9 +29,13 @@ public class Turma {
 		private Long turmaId;
 		
 		@Column(name = "TURMA_NOME")
+		@NotNull
+		@NotEmpty(message = "Ops! esquecemos o nome da Turma!")
 		private String turmaNome;
 		
 		@Column(name = "PERIODO")
+		@NotNull
+		@NotEmpty(message = "Campo periodo não pode estar vazio")
 		private String periodo;
 
 		@ManyToOne
