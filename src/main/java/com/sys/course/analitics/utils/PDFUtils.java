@@ -24,11 +24,7 @@ public class PDFUtils {
     		final BaseColor LIGHTGRAY = new BaseColor(228, 228, 228);
     		final BaseColor WHITE = new BaseColor(255, 255, 255);
 
-
-    		
-
-		
-		Document doc = new Document();		
+    	Document doc = new Document();		
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 		
 		try {
@@ -161,7 +157,6 @@ public class PDFUtils {
 				
 				PdfWriter.getInstance(doc, byteArrayOutputStream);
 				doc.open();
-				doc.addTitle("Titulo do relatório");
 				doc.add(table);
 				doc.close();	
 				System.out.println("preenchi pdf");

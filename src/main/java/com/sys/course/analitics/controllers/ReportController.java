@@ -43,7 +43,12 @@ public class ReportController {
 	@GetMapping("/relatorioPorDisciplina")
 	public String relatorioPorDisciplina(Model model) {
 		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
-			return "relatorios/relatorioPorDisciplina";
+		return "relatorios/relatorioPorDisciplina";
+	}
+	
+	@GetMapping("/relatorioPorPeriodo")
+	public String relatorioPorPeriodo(Model model) {
+		return "relatorios/relatorioPorPeriodo";
 	}
 	
 	@GetMapping("/html")
@@ -51,11 +56,21 @@ public class ReportController {
 		return "relatorios/relatorioIndex";
 	}
 	
-	@GetMapping("/relatorioPorPeriodo")
-	public String relatorioPorPeriodo() {
-		return "relatorios/relatorioPorPeriodo";		
+	@GetMapping("/relatorioPdfPorPeriodo")
+	public String relatorioPdfPorPeriodo() {
+		return "relatorios/relatorioPdfPorPeriodo";		
 	}
 	
+	@GetMapping("/gerarRelatorioPdfPorDisciplina")
+	public String gerarRelatorioPdfPorDisciplina(Model model) {
+		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
+		return "relatorios/relatorioPdfPorDisciplina";		
+	}
+	
+	@GetMapping("/gerarRelatorioPdfPorPeriodo")
+	public String gerarRelatorioPdfPorPeriodo() {
+		return "relatorios/relatorioPdfPorPeriodo";		
+	}
 	
 	@GetMapping("/graficoDeBarras")
 	public String graficoDeBarras(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
@@ -130,6 +145,22 @@ public class ReportController {
 			return null;
 		}
 		List<Aula> list = service.relatorioDeAulaPorDisciplinaTitulo(disciplina);
+		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
+		System.out.println("preenchi reelatorio");
+	
+	return ResponseEntity.ok().header("Content-Disposition", "inline; filename=report.pdf").contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(pdf));	
+		
+	}
+	
+	@GetMapping("/pdfPorTituloPeriodo")
+	public ResponseEntity<InputStreamResource> pdfPorTituloPeriodo(@RequestParam("dataInicial")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataInicial,@RequestParam("dataFinal")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataFinal,Model model){
+		
+		if ((dataFinal == null) || (dataInicial == null)){
+			return null;
+		}
+		List<Aula> list = service.relatorioDeAulaPorPeriodo(dataInicial, dataFinal);
 		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
 		System.out.println("preenchi reelatorio");
 	

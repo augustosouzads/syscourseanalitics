@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://thymeleaf.org"
+       xmlns: layout="http://www.ultraq.net.nz/thymeleaf/layout">
+       
+<head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+     <title> Relatório PDF por Disciplina  </title>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+         <h1>Emissão de Relatórios</h1>
+    </div >
+    
+    <div class="jumbotron" align="center" style="color:black ; margin-top: 10px ">
+         <h2>Selecione a Disciplina desejada</h2>
+    
+      <form th:action="@{/reports/pdfPorTituloDisciplina}" th:method="get">
+		
+		<div class="form-group">
+			<select name="disciplina" class="">
+				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.titulo}" th:text="${disciplina.titulo}"></option>
+			</select>
+	    </div>
+	    <hr class="my-4">
+			<button type="submit" class="btn btn-lg btn-primary">Gerar relatório PDF</button>
+			<a href="html" class="btn btn-lg btn-primary">Cancelar</a>				
+			<a href="/" class="btn btn-lg btn-primary">Inicio</a>				
+		</form>
+	</div >
+<!--     <form method="post">
+   <div>
+   Nome: <input type="text" value=" " name="nome"/>
+  </div>
+   Local: <input type="text" value=" " name= "local"/>
+   Data: <input type="text" value=" " name="data"/>
+   Horario: <input type="text" value=" " name="horario"/>
+   
+   <button type="submit"> Salvar </button>
+   
+   </form>
+ -->  
+</div>  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>  
