@@ -105,6 +105,8 @@ public class ReportController {
 	@GetMapping("/graficoDeBarrasPorDisciplinaTitulo")
 	public String graficoDeBarrasPorDisciplinaTitulo(@RequestParam(required = false, value = "disciplina") String disciplina, Model model) {
 		
+		model.addAttribute("disciplina", disciplina);
+
 		if (disciplina == null) {
 			return "relatorios/relatorioIndex";
 		}
@@ -124,6 +126,9 @@ public class ReportController {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataInicial,@RequestParam("dataFinal")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dataFinal,Model model) {
 		
+		model.addAttribute("dataInicial", dataInicial);
+		model.addAttribute("dataFinal", dataFinal);
+
 		if ((dataFinal == null) || (dataInicial == null)){
 			return "relatorios/relatorioIndex";
 		}

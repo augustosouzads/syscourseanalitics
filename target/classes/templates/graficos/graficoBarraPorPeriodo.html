@@ -37,11 +37,17 @@
         </tr>
    </table>
   </div>
-  		<a href="/reports/relatorioPdfPorPeriodo" class="btn btn-lg btn-primary">Gerar Relatório</a>
   
-	
-		<div id="container"
-			style="width: 550; height: 400; margin: 0 auto"></div>
+  		<form th:action="@{/reports/pdfPorTituloPeriodo}" th:method="get">
+      
+        <input type="hidden" th:value="${dataInicial}" class="form-control" id="dataInicial" name="dataInicial" />
+        <input type="hidden" th:value="${dataFinal}" class="form-control" id="dataFinal" name="dataFinal" />
+        
+		<button type="submit" class="btn btn-lg btn-primary">Gerar Relatorio</button>
+	  </form>
+  		<!--<a href="/reports/relatorioPdfPorPeriodo" class="btn btn-lg btn-primary">Gerar Relatório</a>-->
+  
+	<div id="container"	style="width: 550; height: 400; margin: 0 auto"></div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
