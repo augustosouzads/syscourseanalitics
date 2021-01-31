@@ -24,10 +24,10 @@ public class CursoService {
 	}
 	
 	public void deletarCurso(Long cursoId) {
-		repository.deleteById(cursoId);;
+		repository.deleteById(cursoId);
 	}
 	
-	public Curso atualizarProfessor (Long cursoId, Curso curso) {
+	public Curso atualizarCurso (Long cursoId, Curso curso) {
 		curso.setCursoId(cursoId);
 		repository.save(curso);
 		return new Curso();
