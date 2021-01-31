@@ -1,17 +1,19 @@
 package com.sys.course.analitics.controllers;
 
-import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.ModelAndView;
 import com.sys.course.analitics.models.Aula;
 import com.sys.course.analitics.models.Curso;
 import com.sys.course.analitics.models.Disciplina;
@@ -77,22 +79,39 @@ public class AulaController {
 	
 
 	@RequestMapping(value = "cadastrarAula", method = RequestMethod.POST)
-	public String cadastrarAula(@RequestParam("quantidadeAlunos")int quantidadeAlunos,@RequestParam("data")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate data,@RequestParam("link") String link,@RequestParam("conteudo") String conteudo,
-	@RequestParam("disciplinaId")Disciplina disciplinaId,
-	@RequestParam("professorId")Professor professorId, Model model ){
+	public ModelAndView cadastrarAula(@Valid Aula aula,BindingResult bindingResult ){
 			
-		    Aula novaAula = new Aula(quantidadeAlunos, data,link, conteudo, disciplinaId,
-		   professorId);
+		if(bindingResult.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("aulas/aulaErro");
+			Iterable<Aula> aulas = service.obterAulas(); 
+			//modelAndView.addObject("aulas",aulas);
+			//modelAndView.addObject("aulaObj",aula);
+			
+			List<String> msg =  new ArrayList<String>();
+			for(ObjectError objectError : bindingResult.getAllErrors()) {
+				msg.add(objectError.getDefaultMessage());
+			}
 		    
-		    service.salvarAula(novaAula);
-		   
-     	    Iterable<Aula> aulas = service.obterAulas(); 		    
-		    model.addAttribute("aulas", aulas); 
-		    
-		    
+			modelAndView.addObject("msg",msg);
+			return modelAndView;
+		}			
+			service.salvarAula(aula);	
+			ModelAndView modelAndView = new ModelAndView("aulas/listaAulas");
+			Iterable<Aula> aulas = service.obterAulas(); 
+			modelAndView.addObject("aulas",aulas);
+			
+			return modelAndView;
 		
-			return "aulas/listaAulas";
+		
+		
+//		    Aula novaAula = new Aula(quantidadeAlunos, data,link, conteudo, disciplinaId,
+//		   professorId);
+//		    
+//		    service.salvarAula(novaAula);
+//		   
+//     	    Iterable<Aula> aulas = service.obterAulas(); 		    
+//		    model.addAttribute("aulas", aulas); 
+		
 	}
 	
 	@RequestMapping(value = "deletarAula", method = RequestMethod.GET)

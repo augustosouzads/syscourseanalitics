@@ -72,19 +72,21 @@ public class ReportController {
 		return "relatorios/relatorioPdfPorPeriodo";		
 	}
 	
-	@GetMapping("/graficoDeBarras")
-	public String graficoDeBarras(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
+	@GetMapping("/graficoDeBarrasDisciplinaId")
+	public String graficoDeBarrasDisciplinaId(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
 		
-		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
 		if (disciplina == null) {
-			return "relatorios/relatorio";
+			return "relatorios/relatorioIndex";
 		}
 		
 		List<Aula> list = service.relatorioDeAulaPorDisciplina(disciplina);
-		model.addAttribute("Data", list.stream().map(Aula::getData).collect(Collectors.toList()));
-		model.addAttribute("Conectados", list.stream().map(Aula::getQuantidadeAlunos).collect(Collectors.toList()));
-		model.addAttribute("Matriculados", list.stream().map(Aula::getDisciplinaId).collect(Collectors.toList()));		
-		return "relatorios/graficoDeBarras";
+		model.addAttribute("aulas", list);
+		model.addAttribute("data", list.stream().map(Aula::getData).collect(Collectors.toList()));
+		model.addAttribute("conectados", list.stream().map(Aula::getQuantidadeAlunos).collect(Collectors.toList()));
+		model.addAttribute("matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
+		model.addAttribute("curso", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getCursoId).map(Curso::getSigla).collect(Collectors.toList()));
+		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
+return "relatorios/graficoDeBarras";
 	}
 	
 	@GetMapping("/graficoDeBarras2")

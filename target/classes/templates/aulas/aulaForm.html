@@ -7,14 +7,15 @@
 </head>
 <body>
 <div class="container">
-        <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
-            <h1>Cadastro de Aulas</h1>
-        </div>
 
+    <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
+            <h1>Cadastro de Aulas</h1>
+    </div>
+	
 	<form action="cadastrarAula" name='aulaForm' th:object="${disciplinas}" method="POST" >
 	   
      <div class="form-group">
-        <label for="quantidadeAlunos">Quantida de Alunos</label> 
+        <label for="quantidadeAlunos">Quantidade de Alunos Conectados</label> 
         <input type="number" class="form-control" id="quantidadeAlunos" name="quantidadeAlunos" placeholder="Somente numeros"/>
     
         <label for="data">Data </label> 
@@ -31,50 +32,19 @@
         <input type="text" class="form-control" id="conteudo" name="conteudo" placeholder="Conteúdo didático"/>
     </div>
    
- <!--      
-    <div>
-		<label  class="col-form-label">Disciplina </label>
-			<select id="disciplina" name="disciplina" th:field="*{disciplina.id}">
-   				<option th:each="disciplina : ${disciplinas}"
-   				th:value="${disciplina.disciplinaId}"
-   			    th:utext="${disciplina.titulo}"></option>
-   			</select>
-   	</div>
-  
-   <div class="form-group">
-        <label for="curso"> Curso </label> 
-       	    <select id="cursoId" name="cursoId" class="custom-select">
-		        <option selected="selected">Please select the course...</option>
-		        <option th:each="curso : ${cursos}"
-		        th:value="${curso.cursoId}"
-		        th:utext="${curso.cursoTitulo+' ('+curso.sigla+')'}"></option>		
-      		</select>
-    </div> -->
 
      <div class="form-group">
        <label for="turmas"> Disciplina </label> 
      	 <select id="disciplinaId" name="disciplinaId" class="custom-select">
-     	 	    <option selected="selected">Please select the Disiplin...</option>
      	        <option th:each="disciplina : ${disciplinas}"
    				th:value="${disciplina.disciplinaId}"
    			    th:utext="${'('+disciplina.turmaId.turmaNome+ ' '+disciplina.turmaId.periodo+' '+disciplina.turmaId.cursoId.sigla+') '+ disciplina.titulo +' (' +disciplina.diaDaSemana+ ')'}"></option>
    		</select>
     </div>
    
- <!--      <div class="form-group">
-        <label for="turmas"> Turma </label> 
-       	    <select id="turmaId" name="turmaId" class="custom-select">
-     	 	    <option selected="selected">Please select the class...</option>
-		        <option th:each="turma : ${turmas}"
-   				th:value="${turma.turmaId}"
-   			    th:utext="${'('+turma.cursoId.sigla+') '+turma.turmaNome +' ('+turma.periodo+ ')'}"></option>		        
-		    </select>
-    </div>
--->  
     <div class="form-group">
         <label for="professorId"> Professor </label> 
        	    <select id="professorId" name="professorId" class="custom-select">
-				 <option selected="selected">Please select the teacher...</option>
 				 <option th:each="professor : ${professores}"
    			     th:value="${professor.professorId}"
    				 th:utext="${professor.nome +' '+ professor.sobrenome}"></option>

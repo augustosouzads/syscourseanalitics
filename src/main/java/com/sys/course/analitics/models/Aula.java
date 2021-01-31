@@ -15,6 +15,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.sun.istack.NotNull;
 
@@ -39,25 +40,23 @@ public class Aula {
 		
 		@Column(name = "QTDE_ALUNOS")
 		@NotNull
-		@NotEmpty(message = "Favor preencher o campo")
 		@Min(value = 0, message = "Quantidade invalida")
 		@Max(value = 80, message = "Quantidade invalida")
 		private int quantidadeAlunos;
 		
 		@Column(name = "DATA")
-		@DateTimeFormat(pattern = "dd/MM/yyyy")
+		@DateTimeFormat(iso = ISO.DATE)		
 		@NotNull
-		@NotEmpty(message = "Campo data pode estar vazio")
 		private LocalDate data;
 		
 		@Column(name = "LINK")
 		@NotNull
-		@NotEmpty(message = "Campo link pode estar vazio")
+		@NotEmpty(message = "Campo link não pode estar vazio")
 		private String link;
 
 		@Column(name = "CONTEUDO")
 		@NotNull
-		@NotEmpty(message = "Campo conteudo pode estar vazio")
+		@NotEmpty(message = "Campo conteudo não pode estar vazio")
 		private String conteudo;
 				
 		@ManyToOne

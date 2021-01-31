@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Cadastro de Disciplina</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
-<body>
-
-	
+<body>	
 
 <div class="container">
         <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
             <h1>Cadastro de disciplina</h1>
         </div>
-        
+   <br/>
+	<div th:each = "m : ${msg}">
+	   <span th:text = "${m}"></span>
+	</div>
+   <br/>
      
 
 	<form action="cadastrarDisciplina" method="post">
 	
 	<div class="form-group">
-        <label for="turma"> Turma </label> 
-       	    <select id="turma" name="turma" class="custom-select">
-     	 	    <option selected="selected">Please select the class...</option>
-		        <option th:each="turma : ${turmas}"
-   				th:value="${turma.turmaId}"
-   			    th:utext="${turma.turmaNome +' - '+turma.cursoId.sigla+' ('+turma.periodo+')'}"></option>		        
+        <label for="turma"> Selecione a turma abaixo </label> 
+       	    <select id="turma" name="turmaId" class="custom-select">
+		        <option th:each="turma : ${turmas}"	th:value="${turma.turmaId}" th:utext="${turma.turmaNome +' - '+turma.cursoId.sigla+' ('+turma.periodo+')'}"></option>		        
 		    </select>
     </div>
     <div class="form-group">
@@ -33,14 +32,13 @@
         <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo"/>
     </div>
      <div class="form-group">
-        <label for="quantidadeAluno">Nº de Matriculados</label> 
-        <input type="number" class="form-control" id="quantidadeAluno" name="quantidadeAluno" placeholder="Somente numeros"/>
+        <label for="quantidadeAluno">Quantidade de alunos matriculados</label> 
+        <input type="number" class="form-control" id="quantidadeAluno" name="quantidadeAluno" />
     </div>
     
     <div class="form-group">
         <label for="diaDaSemana"> Dias da Semana </label> 
        	    <select id="diaDaSemana" name="diaDaSemana" class="custom-select">
-		        <option disabled>Please select...</option>
 		        <option value="Segunda-Feira"> Segunda-Feira </option>
 		        <option value="Terça-Feira"> Terça-Feira </option>
 		        <option value="Quarta-Feira"> Quarta-Feira </option>

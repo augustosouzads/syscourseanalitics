@@ -10,6 +10,12 @@
         <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
             <h1>Cadastro de Turmas</h1>
         </div>
+        
+    <br/>
+		<div th:each = "m : ${msg}">
+		   <span th:text = "${m}"></span>
+		</div>
+	<br/>
 
 	<form action="cadastrarTurma" method="post">
 	

@@ -48,8 +48,5 @@ public class Turma {
 			this.periodo =periodo;
 			this.cursoId = cursoId;
 		}
-
-	
-
-
+		
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Turma invalida  </title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+
+	<div class="jumbotron" align="center" style="color:red ; margin-top: 10px ">
+         <h1>Course Analitics: erro</h1>
+    </div>
+    
+    <label style="color: red">erro:</label>
+    
+    <br/><div th:each = "m : ${msg}"> <span th:text = "${m}"></span></div><br/>
+    <hr>
+    
+    <div>
+		<a href="turmaForm" class="btn btn-lg btn-primary">Cadastrar Novamente</a>
+		<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	</div> <hr>DevWeb
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

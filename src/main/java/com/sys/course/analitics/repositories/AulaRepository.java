@@ -17,7 +17,7 @@ public interface AulaRepository extends CrudRepository<Aula, Long>{
 	
 	@Query(value = "SELECT TA.* FROM aula TA \n" + 
 			"INNER JOIN disciplina TD ON TA.disciplina_id = TD.disciplina_id\n" + 
-			"AND TD.titulo =:disciplina", nativeQuery = true )
+			"AND TD.titulo LIKE %:disciplina%", nativeQuery = true )
 	public List<Aula> obterAulasPorDisciplinaTitulo(@Param("disciplina")String disciplina);
 	
 	

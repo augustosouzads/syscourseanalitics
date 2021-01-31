@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Cadastro de Curso</title>
@@ -10,7 +10,11 @@
         <div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
             <h1>Cadastro de curso</h1>
         </div>
-
+<br/>
+	<div th:each = "m : ${msg}" >
+		   <span th:text = "${m}"></span>
+	</div>
+<br/>
 <form action="cadastrarCurso" method="post">
     <div class="form-group">
         <label for="cursoTitulo">Titulo do Curso </label> 

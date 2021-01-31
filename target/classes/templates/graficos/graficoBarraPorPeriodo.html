@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 align="center">Análise de Dados </h1>
+		<h1 align="center">Análise de Dados por Período</h1>
 
 		<div id="RelatorioDeAulasPorDisciplina">
     <table class="table table-hover">
@@ -24,16 +24,18 @@
             <th>Matriculados</th>
             <th>Turma</th>
             <th>Curso</th>
-            <th>Titulo</th>
+            <th>Titulo da Disciplina</th>
+            <th>Professor</th>
         </tr>
         </thead>
         <tr th:each="aula : ${aulas}">
             <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
             <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
             <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
-            <td> <span th:text="${aula.disciplinaId.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.turmaId.turmaNome+'('+aula.disciplinaId.turmaId.periodo+')'}"></span> </td>
             <td> <span th:text="${aula.disciplinaId.turmaId.cursoId.sigla}"></span> </td>
             <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+            <td> <span th:text="${aula.professorId.nome}"></span> </td>            
         </tr>
    </table>
   </div>
@@ -76,7 +78,7 @@
         }],
         yAxis: {
             min: 0,
-            max:25,
+            max:85,
             title: {
                 text: "Classicação de Audiência das Aulas por disciplina"
             }

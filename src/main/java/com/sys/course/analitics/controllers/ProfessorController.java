@@ -44,11 +44,9 @@ public class ProfessorController {
 		
 
 		if(bindingResult.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("professores/professorForm");
+			ModelAndView modelAndView = new ModelAndView("professores/professorErro");
 			Iterable<Professor> professores = service.obterProfessores(); 
-			modelAndView.addObject("professores",professores);
-			modelAndView.addObject("professorObj",professor);
-			
+					
 			List<String> msg =  new ArrayList<String>();
 			for(ObjectError objectError : bindingResult.getAllErrors()) {
 				msg.add(objectError.getDefaultMessage());
