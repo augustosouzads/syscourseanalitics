@@ -80,29 +80,30 @@ public class DisciplinaController {
 			modelAndView.addObject("disciplinas", disciplinas);
 			
 			return modelAndView;
-
-//		Disciplina novaDisciplina = new Disciplina(titulo,quantidadeAluno,diaDaSemana,turma);
-//		
-//	    service.salvarDisciplina(novaDisciplina);
-//	   
-//	    Iterable<Disciplina> disciplinas = service.obterDisciplinas();
-//		    
-//	    model.addAttribute("disciplinas", disciplinas); 
-//		
-//		return "disciplinas/listaDisciplinas";
 	}
 	
 	@RequestMapping(value = "deletarDisciplina", method = RequestMethod.GET)
-	public String deletarDisciplina(@RequestParam("disciplinaId") Long disciplinaId, Model model) {
-		 
-		service.deletarDisciplina(disciplinaId);
+	public ModelAndView deletarDisciplina(@RequestParam("disciplinaId") Long disciplinaId, Model model)throws Exception {
 		
-		Iterable<Disciplina> disciplinas = service.obterDisciplinas();
-	    
-	    model.addAttribute("disciplinas", disciplinas); 
-
-		return "disciplinas/listaDisciplinas";
+		ModelAndView modelAndView = new ModelAndView("disciplinas/listaDisciplinas");
 		
+		try {
+			service.deletarDisciplina(disciplinaId);
+			Iterable<Disciplina> disciplinas = service.obterDisciplinas();
+			model.addAttribute("disciplinas", disciplinas); 
+			
+			return modelAndView;
+						
+		} catch (Exception e) {
+			
+			String msg = "Veriifique se inseriu um 'Id' valido, ou talvez ainda exista registros vinculados a esta disciplina !";
+			modelAndView.setViewName("disciplinas/disciplinaErroDelete");
+			modelAndView.addObject("msg", msg);
+			
+			return modelAndView;
+ 		}
 	}
+
+
 	
 }

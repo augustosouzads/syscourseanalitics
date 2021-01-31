@@ -102,28 +102,39 @@ public class AulaController {
 			
 			return modelAndView;
 		
-		
-		
-//		    Aula novaAula = new Aula(quantidadeAlunos, data,link, conteudo, disciplinaId,
-//		   professorId);
-//		    
-//		    service.salvarAula(novaAula);
-//		   
-//     	    Iterable<Aula> aulas = service.obterAulas(); 		    
-//		    model.addAttribute("aulas", aulas); 
-		
 	}
 	
 	@RequestMapping(value = "deletarAula", method = RequestMethod.GET)
-	public String deletarAula(@RequestParam("aulaId") Long aulaId, Model model) {
+	public ModelAndView deletarAula(@RequestParam("aulaId") Long aulaId, Model model){
+
+		ModelAndView modelAndView = new ModelAndView("aulas/listaAulas");
 		
-		service.deletarAula(aulaId);
-		
- 	    Iterable<Aula> aulas = service.obterAulas(); 
-	    
- 	    model.addAttribute("aulas", aulas); 
-		
-		return "aulas/listaAulas";
+		try {
+			service.deletarAula(aulaId);
+			Iterable<Aula> aulas = service.obterAulas(); 
+			model.addAttribute("aulas", aulas); 
+			
+			return modelAndView;
+			
+		} catch (Exception e) {
+			String msg = "Veriifique se inseriu um 'Id' valido!";
+			modelAndView.setViewName("aulas/aulaErroDelete");	
+			modelAndView.addObject("msg",msg);
+
+			return modelAndView;
+
+		}
+			
+//	@RequestMapping(value = "deletarAula", method = RequestMethod.GET)
+//	public String deletarAula(@RequestParam("aulaId") Long aulaId, Model model) {
+//		
+//		service.deletarAula(aulaId);
+//		
+// 	    Iterable<Aula> aulas = service.obterAulas(); 
+//	    
+// 	    model.addAttribute("aulas", aulas); 
+//		
+//		return "aulas/listaAulas";
+//	}
 	}
-	
 }
