@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,16 +69,30 @@ public class CursoController {
 	}
 	
 	@RequestMapping(value = "deletarCurso", method = RequestMethod.GET)
-	public String deletarCurso(@RequestParam("cursoId") Long cursoId, Model model) {
+	public ModelAndView deletarCurso(@RequestParam("cursoId") Long cursoId, Model model) throws Exception {
 		
-		service.deletarCurso(cursoId);
+		ModelAndView modelAndView = new ModelAndView("cursos/listaCursos");
 		
-		Iterable<Curso> cursos = service.obterCursos(); 
-	    
-	    model.addAttribute("cursos", cursos); 
-	
-		return "cursos/listaCursos";
-		
+		try {			
+			service.deletarCurso(cursoId);
+			
+			Iterable<Curso> cursos = service.obterCursos(); 
+			
+			model.addAttribute("cursos", cursos); 
+			return modelAndView;
+			
+		} catch (Exception e) {
+			
+			String msg ="Veriifique se inseriu um 'Id' valido, ou talvez ainda exista registros vinculados a este curso !";
+					
+			modelAndView.setViewName("cursos/cursoErroDelete");
+			
+			modelAndView.addObject("msg", msg);
+			
+		    return modelAndView;
+		 }
+				
 	}
 	
+
 }

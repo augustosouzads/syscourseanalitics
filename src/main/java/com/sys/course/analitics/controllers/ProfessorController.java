@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sys.course.analitics.models.Curso;
 import com.sys.course.analitics.models.Professor;
 import com.sys.course.analitics.services.ProfessorService;
 
@@ -64,16 +65,41 @@ public class ProfessorController {
 	}
 	
 	@RequestMapping(value = "deletarProfessor", method = RequestMethod.GET)
-	public String deletarProfessor(@RequestParam("professorId") Long professorId, Model model) {
+	public ModelAndView deletarProfessor(@RequestParam("professorId") Long professorId, Model model) throws Exception {
 		
-		service.deletarProfessor(professorId);
+		ModelAndView modelAndView = new ModelAndView("professores/listaProfessores");
 		
-		Iterable<Professor> professores = service.obterProfessores(); 
-	    
-	    model.addAttribute("professores", professores); 
-	
-		return "professores/listaProfessores";
-		
+		try {			
+			service.deletarProfessor(professorId);
+			
+			Iterable<Professor> professores = service.obterProfessores(); 
+			
+			model.addAttribute("professores", professores); 
+			return modelAndView;
+			
+		} catch (Exception e) {
+			
+			String msg ="Veriifique se inseriu um 'Id' valido, ou talvez ainda exista registros vinculados a este professor !";
+					
+			modelAndView.setViewName("professores/professorErroDelete");
+			
+			modelAndView.addObject("msg", msg);
+			
+		    return modelAndView;
+		 }
+				
 	}
+//	@RequestMapping(value = "deletarProfessor", method = RequestMethod.GET)
+//	public String deletarProfessor(@RequestParam("professorId") Long professorId, Model model) {
+//		
+//		service.deletarProfessor(professorId);
+//		
+//		Iterable<Professor> professores = service.obterProfessores(); 
+//	    
+//	    model.addAttribute("professores", professores); 
+//	
+//		return "professores/listaProfessores";
+//		
+//	}
 	
 }
