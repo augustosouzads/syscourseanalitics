@@ -89,17 +89,6 @@ public class ProfessorController {
 		 }
 				
 	}
-//	@RequestMapping(value = "deletarProfessor", method = RequestMethod.GET)
-//	public String deletarProfessor(@RequestParam("professorId") Long professorId, Model model) {
-//		
-//		service.deletarProfessor(professorId);
-//		
-//		Iterable<Professor> professores = service.obterProfessores(); 
-//	    
-//	    model.addAttribute("professores", professores); 
-//	
-//		return "professores/listaProfessores";
-//		
-//	}
+
 	
 }

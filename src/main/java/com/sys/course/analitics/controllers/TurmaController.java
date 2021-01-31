@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sys.course.analitics.models.Curso;
-import com.sys.course.analitics.models.Professor;
 import com.sys.course.analitics.models.Turma;
 import com.sys.course.analitics.services.CursoService;
 import com.sys.course.analitics.services.TurmaService;
@@ -69,18 +68,31 @@ public class TurmaController {
 			
 			return modelAndView;
 	}
-	
 	@RequestMapping(value = "deletarTurma", method = RequestMethod.GET)
-	public String deletarTurma(@RequestParam("turmaId") Long turmaId, Model model) {
-				
+	public ModelAndView deletarTurma(@RequestParam("turmaId") Long turmaId, Model model) throws Exception {
+		
+		ModelAndView modelAndView = new ModelAndView("turmas/listaTurmas");
+		
+		try {
 			service.deletarTurma(turmaId);	
 			
 			Iterable<Turma> turmas = service.obterTurmas(); 	    
-			
+				
 			model.addAttribute("turmas", turmas); 			
 			
+			return modelAndView;
+
+		} catch (Exception e) {
+				
+			String msg = "Veriifique se inseriu um 'Id' valido, ou talvez ainda exista registros vinculados a esta turma !";
+			
+			modelAndView.setViewName("turmas/turmaErroDelete");
+			
+			modelAndView.addObject("msg", msg);
+			
+			return modelAndView;
+			}
 		
-		return "turmas/listaTurmas";
 	}
-	
+
 }
