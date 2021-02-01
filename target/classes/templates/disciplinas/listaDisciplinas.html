@@ -29,7 +29,7 @@
             <td> <span th:text="${disciplinaID.titulo}"></span> </td>
             <td> <span th:text="${disciplinaID.quantidadeAluno}"></span> </td>
             <td> <span th:text="${disciplinaID.diaDaSemana}"></span> </td>
-            <td> <span th:text="${disciplinaID.turmaId.cursoId.cursoTitulo}"></span>
+            <td> <span th:text="${disciplinaID.turmaId.cursoId.cursoTitulo +' ('+disciplinaID.turmaId.cursoId.sigla  +')'}"></span>
             <td> <span th:text="${disciplinaID.turmaId.turmaNome}"></span> </td>  
             <td> <span th:text="${disciplinaID.turmaId.periodo}"></span> </td>
         </tr>
