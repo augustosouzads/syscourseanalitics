@@ -1,5 +1,6 @@
 package com.sys.course.analitics.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class DisciplinaService {
 	public Optional<Disciplina> acharDisciplinaPorId(Long disciplinaId) {
 		Optional<Disciplina> disciplina = repository.findById(disciplinaId);
 		return disciplina;
+	}
+
+	public List<String> obterDisciplinasPorTitulo() {
+		List<String> disciplinas = repository.obterDisciplinasPorTitulo();
+		return disciplinas;
 	}
 }
 

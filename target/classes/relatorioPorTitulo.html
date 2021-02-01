@@ -6,25 +6,25 @@
 	 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />	 
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
-     <title> Relatório por Disciplina  </title>
+     <title> Relatório por TTitulo  </title>
 </head>
 
 <body>
 
 <div class="container">
 	<div class="jumbotron" align="center" style="color:darkblue ; margin-top: 10px ">
-         <h1>Relatório por Disciplina</h1>
+         <h1>Relatório por Titulo</h1>
     </div >
     
     <div class="jumbotron" align="center" style="color:black ; margin-top: 10px ">
-         <h2>Selecione a Disciplina desejada</h2>
+         <h2>Selecione o título da disciplina desejada</h2>
     
-     <form th:action="@{/reports/graficoDeBarrasDisciplinaId}" th:method="get">   
+     <form th:action="@{/reports/graficoDeBarrasPorDisciplinaTitulo}" th:method="get">   
 		
 		<div class="form-group">
 			<select name="disciplina" class="">
-				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.disciplinaId}"
-				th:utext="${disciplina.titulo +' ('+disciplina.turmaId.turmaNome+ ' - '+disciplina.diaDaSemana+ ' '+disciplina.turmaId.periodo+' - Curso '+disciplina.turmaId.cursoId.sigla+' )'}"></option>
+				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina}"
+				th:utext="${disciplina }"></option>
 			</select>
 	    </div>
  	    

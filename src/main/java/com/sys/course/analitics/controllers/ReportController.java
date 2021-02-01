@@ -33,12 +33,7 @@ public class ReportController {
 	
 	@Autowired
 	private AulaService service;
-	
-//	public ReportController(DisciplinaService disciplinaService, AulaService service) {
-//		this.disciplinaService = disciplinaService;
-//		this.service = service;
-//	}
-		
+
 	
 	@GetMapping("/relatorioPorDisciplina")
 	public String relatorioPorDisciplina(Model model) {
@@ -53,6 +48,7 @@ public class ReportController {
 	
 	@GetMapping("/relatorioPorTitulo")
 	public String relatorioPorTitulo(Model model) {
+		model.addAttribute("disciplinas", disciplinaService.obterDisciplinasPorTitulo());
 		return "relatorios/relatorioPorTitulo";
 	}
 	
