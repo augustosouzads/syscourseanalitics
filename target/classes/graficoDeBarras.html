@@ -15,8 +15,6 @@
 	<div class="container">
 		<h1 align="center">Análise de Dados pela Disciplina </h1>
 		
-		<br/><div th:each = "aula : ${aulas}"> <span th:text = "${aula.disciplinaId.disciplinaTitulo}"></span></div><br/>
-		
 		<div id="RelatorioDeAulasPorDisciplina">
     <table class="table table-hover">
         <thead>
@@ -29,7 +27,7 @@
             <th>Titulo</th>
         </tr>
         </thead>
-        <tr th:each="aula : ${disciplinas}">
+        <tr th:each="aula : ${aulas}">
             <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
             <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
             <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
@@ -40,15 +38,13 @@
    </table>
   </div>
   
-      <form th:action="@{/reports/pdfPorTituloDisciplina}" th:method="get">
+      <form th:action="@{/reports/pdfPorDisciplinaId}" th:method="get">
       
         <input type="hidden" th:value="${disciplina}" class="form-control" id="disciplina" name="disciplina" />
         
 		<button type="submit" class="btn btn-lg btn-primary">Gerar Relatorio</button>
 	  </form>
 	  
-  		<!--<a href="/reports/gerarRelatorioPdfPorDisciplina" class="btn btn-lg btn-primary">Gerar Relatório</a>-->		
-  
 	
 		<div id="container"
 			style="width: 550; height: 400; margin: 0 auto"></div>

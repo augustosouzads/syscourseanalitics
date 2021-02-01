@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html  xmlns:th="http://thymeleaf.org">
-       <!-- xmlns: layout="http://www.ultraq.net.nz/thymeleaf/layout" -->
 <head>
 	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />	 
@@ -18,37 +17,22 @@
     </div >
     
     <div class="jumbotron" align="center" style="color:black ; margin-top: 10px ">
-         <h2>Selecione o Titulo da Disciplina desejada</h2>
-    
-     <form th:action="@{/reports/graficoDeBarrasPorDisciplinaTitulo}" th:method="get">   
-		
-		<div class="form-group">
-			<select name="disciplina" class="">
-				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.titulo}"
-				 th:text="${disciplina.titulo}"></option>
-			</select>
-	    </div>
-	    
-			<button type="submit" class="btn btn-lg btn-primary"style="color: black">Visualizar Dados</button>
-		</form>
-		</div >
-		
-		<!--<div class="jumbotron" align="center" style="color:black ; margin-top: 10px ">
-         <h2>Selecione a Disciplina específica desejada</h2>
+         <h2>Selecione a Disciplina desejada</h2>
     
      <form th:action="@{/reports/graficoDeBarrasDisciplinaId}" th:method="get">   
 		
 		<div class="form-group">
 			<select name="disciplina" class="">
 				<option th:each= "disciplina : ${disciplinas}" th:value="${disciplina.disciplinaId}"
-				 th:text="${'Id '+disciplina.disciplinaId+' '+disciplina.titulo+' ('+disciplina.turmaId.turmaNome+' '+disciplina.turmaId.periodo+'
-				 '+disciplina.turmaId.cursoId.sigla+')'}"></option>
+				th:utext="${disciplina.titulo +' ('+disciplina.turmaId.turmaNome+ ' - '+disciplina.diaDaSemana+ ' '+disciplina.turmaId.periodo+' - Curso '+disciplina.turmaId.cursoId.sigla+' )'}"></option>
 			</select>
 	    </div>
-	    
-			<button type="submit" class="btn btn-lg btn-primary"style="color: white">Visualizar Dados</button>
+ 	    
+		<button type="submit" class="btn btn-lg btn-primary"style="color: black">Visualizar Dados</button>
 		</form>
-		</div >-->
+		</div >
+		
+		
 		<div>
 		<a href="html" class="btn btn-lg btn-primary"
 		    style="color: red">Cancelar</a>				

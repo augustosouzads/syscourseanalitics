@@ -34,11 +34,11 @@ public class ReportController {
 	@Autowired
 	private AulaService service;
 	
-	public ReportController(DisciplinaService disciplinaService, AulaService service) {
-		this.disciplinaService = disciplinaService;
-		this.service = service;
+//	public ReportController(DisciplinaService disciplinaService, AulaService service) {
+//		this.disciplinaService = disciplinaService;
+//		this.service = service;
+//	}
 		
-	}
 	
 	@GetMapping("/relatorioPorDisciplina")
 	public String relatorioPorDisciplina(Model model) {
@@ -49,6 +49,11 @@ public class ReportController {
 	@GetMapping("/relatorioPorPeriodo")
 	public String relatorioPorPeriodo(Model model) {
 		return "relatorios/relatorioPorPeriodo";
+	}
+	
+	@GetMapping("/relatorioPorTitulo")
+	public String relatorioPorTitulo(Model model) {
+		return "relatorios/relatorioPorTitulo";
 	}
 	
 	@GetMapping("/html")
@@ -79,6 +84,7 @@ public class ReportController {
 			return "relatorios/relatorioIndex";
 		}
 		
+		model.addAttribute("disciplina",disciplina);
 		List<Aula> list = service.relatorioDeAulaPorDisciplina(disciplina);
 		model.addAttribute("aulas", list);
 		model.addAttribute("data", list.stream().map(Aula::getData).collect(Collectors.toList()));
@@ -86,22 +92,7 @@ public class ReportController {
 		model.addAttribute("matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
 		model.addAttribute("curso", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getCursoId).map(Curso::getSigla).collect(Collectors.toList()));
 		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
-return "relatorios/graficoDeBarras";
-	}
-	
-	@GetMapping("/graficoDeBarras2")
-	public String graficoDeBarras2(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model) {
-		
-		model.addAttribute("disciplinaTitulo", disciplinaService.acharDisciplinaPorId(disciplina));
-		model.addAttribute("disciplinas", disciplinaService.obterDisciplinas());
-		if (disciplina == null) {
-			return "relatorios/relatorio";
-		}
-		List<Aula> list = service.relatorioDeAulaPorDisciplina(disciplina);
-		model.addAttribute("Data", list.stream().map(Aula::getData).collect(Collectors.toList()));
-		model.addAttribute("Conectados", list.stream().map(Aula::getQuantidadeAlunos).collect(Collectors.toList()));
-		model.addAttribute("Matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
-		return "graficos/graficoBarra";
+		return "relatorios/graficoDeBarras";
 	}
 	
 	@GetMapping("/graficoDeBarrasPorDisciplinaTitulo")
@@ -168,6 +159,20 @@ return "relatorios/graficoDeBarras";
 			return null;
 		}
 		List<Aula> list = service.relatorioDeAulaPorPeriodo(dataInicial, dataFinal);
+		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
+		System.out.println("preenchi reelatorio");
+	
+	return ResponseEntity.ok().header("Content-Disposition", "inline; filename=report.pdf").contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(pdf));	
+		
+	}
+	
+	@GetMapping("/pdfPorDisciplinaId")
+	public ResponseEntity<InputStreamResource> pdfPorDisciplinaId(@RequestParam(required = false, value = "disciplina") Long disciplina, Model model){
+		
+		if (disciplina == null) {
+			return null;
+		}
+		List<Aula> list = service.relatorioDeAulaPorDisciplina(disciplina);
 		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
 		System.out.println("preenchi reelatorio");
 	

@@ -21,7 +21,7 @@ public interface AulaRepository extends CrudRepository<Aula, Long>{
 	public List<Aula> obterAulasPorDisciplinaTitulo(@Param("disciplina")String disciplina);
 	
 	
-	@Query(value = "select aula.* from aula as aula where aula.disciplina_id = disciplina_id and disciplina_id =:disciplina", nativeQuery = true )
+	@Query(value = "select ta.* from aula ta where ta.disciplina_id = :disciplina", nativeQuery = true )
 	public List<Aula> obterAulasPorDisciplina(@Param("disciplina")Long disciplina);
 	
 	@Query(value = "SELECT TA.*FROM aula TA WHERE TA.data >=:dataInicial AND TA.data <=:dataFinal", nativeQuery = true )
