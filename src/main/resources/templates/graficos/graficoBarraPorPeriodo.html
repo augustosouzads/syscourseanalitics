@@ -40,14 +40,19 @@
    </table>
   </div>
   
-  		<form th:action="@{/reports/pdfPorTituloPeriodo}" th:method="get">
+  	<form th:action="@{/reports/pdfPorTituloPeriodo}" th:method="get">
       
         <input type="hidden" th:value="${dataInicial}" class="form-control" id="dataInicial" name="dataInicial" />
         <input type="hidden" th:value="${dataFinal}" class="form-control" id="dataFinal" name="dataFinal" />
         
 		<button type="submit" class="btn btn-lg btn-primary">Gerar Relatorio</button>
-	  </form>
-  		<!--<a href="/reports/relatorioPdfPorPeriodo" class="btn btn-lg btn-primary">Gerar Relatório</a>-->
+	 </form>
+	 <div> 
+	 	<h4 align="left" style="blue"> Período pesquisado: De
+	 	 <span th:text = "${#temporals.format(dataInicial,'dd/MM/yyyy')}"></span> à 
+	 	 <span th:text = "${#temporals.format(dataFinal,'dd/MM/yyyy')}"></span>
+	 	 .</h4>
+	 </div>
   
 	<div id="container"	style="width: 550; height: 400; margin: 0 auto"></div>
 	<script

@@ -88,7 +88,7 @@ public class ReportController {
 		model.addAttribute("matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
 		model.addAttribute("curso", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getCursoId).map(Curso::getSigla).collect(Collectors.toList()));
 		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
-		return "relatorios/graficoDeBarras";
+		return "graficos/graficoDeBarras";
 	}
 	
 	@GetMapping("/graficoDeBarrasPorDisciplinaTitulo")
