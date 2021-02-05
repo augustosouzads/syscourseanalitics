@@ -50,6 +50,10 @@ public class AulaService {
 	public List<Aula> relatorioDeAulaPorPeriodo(LocalDate dataInicial,LocalDate dataFinal){
 		return repository.obterAulasPorPeriodo(dataInicial, dataFinal);
 	}
+
+	public List<Aula> relatorioDeAulaPorTurmaId(Long turma) {
+		return repository.obterAulasPorTurmaId(turma);
+	}
 }
 
 

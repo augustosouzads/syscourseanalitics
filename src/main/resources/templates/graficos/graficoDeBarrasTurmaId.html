@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Gráfico por Turma</title>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+
+</head>
+<body>
+	<div class="container">
+		<h1 align="center">Análise de Dados por turma </h1>
+	 	 <span th:text = "${turma}"></span>
+		
+		<div id="RelatorioDeAulasPorTurma">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Data</th>            
+            <th>Conectados</th>
+            <th>Matriculados</th>
+            <th>Turma</th>
+            <th>Curso</th>
+            <th>Titulo</th>
+        </tr>
+        </thead>
+        <tr th:each="aula : ${aulas}">
+            <td> <span th:text="${#temporals.format(aula.data, 'dd/MM/yyyy')}"></span> </td>
+            <td> <span th:text="${aula.quantidadeAlunos}"></span> </td>            
+            <td> <span th:text="${aula.disciplinaId.quantidadeAluno}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.turmaId.turmaNome}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.turmaId.cursoId.sigla}"></span> </td>
+            <td> <span th:text="${aula.disciplinaId.titulo}"></span> </td>
+        </tr>
+   </table>
+  </div>
+  
+      <form th:action="@{/reports/pdfPorTurmaId}" th:method="get">
+      
+        <input type="hidden" th:value="${turmaId}" class="form-control" id="turma" name="turma" />
+        
+		<button type="submit" class="btn btn-lg btn-primary">Gerar Relatorio</button>
+	  </form>
+	  
+	
+		<div id="container"
+			style="width: 550; height: 400; margin: 0 auto"></div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script th:inline="javascript">
+    $(function(){
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Visualização dos Dados'
+        },
+        subtitle: {
+            text: "Dados registrados pelos professores.\nFonte:Blackboard Colaborate Ultra "
+        },
+        xAxis: [{
+            categories: [[${curso}]],
+            crosshair: true
+        },{
+            categories: [[${conectados}]],
+            crosshair: true
+        }],
+        yAxis: {
+            min: 0,
+            max:85,
+            title: {
+                text: "Classicação de Audiência das Aulas por disciplina"
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Matriculados',
+            data: [[${matriculados}]]
+        },{
+            name: 'Conectados',           
+            data: [[${conectados}]]
+        }]
+    });
+    });
+</script>
+	<div>
+	    <ul><li><h4><a href="/reports/relatorioPorDisciplina">Consultar outra Disciplina</a></h4></li></ul>
+		<h4 align="center"> System Course Analitcs Technology Tower Graphs</h4>		
+		<a href="/" class="btn btn-lg btn-primary">Inicio</a>
+	</div>
+  </div>	
+</body>
+</html>

@@ -26,6 +26,10 @@ public interface AulaRepository extends CrudRepository<Aula, Long>{
 	
 	@Query(value = "SELECT TA.*FROM aula TA WHERE TA.data >=:dataInicial AND TA.data <=:dataFinal", nativeQuery = true )
 	public List<Aula> obterAulasPorPeriodo(@Param("dataInicial")LocalDate dataInicial,@Param("dataFinal")LocalDate dataFinal);
+
+	@Query(value = "select * from aula ta inner join disciplina td on \n" + 
+			"ta.disciplina_id = td.disciplina_id and td.turma_id =:turma", nativeQuery = true )
+	public List<Aula> obterAulasPorTurmaId(@Param("turma")Long turma);
 	
 	/*
 	 * Documentação da CrudRepository para mais informações sobre os metodos

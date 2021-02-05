@@ -22,6 +22,7 @@ import com.sys.course.analitics.models.Disciplina;
 import com.sys.course.analitics.models.Turma;
 import com.sys.course.analitics.services.AulaService;
 import com.sys.course.analitics.services.DisciplinaService;
+import com.sys.course.analitics.services.TurmaService;
 import com.sys.course.analitics.utils.PDFUtils;
 
 @Controller
@@ -33,6 +34,9 @@ public class ReportController {
 	
 	@Autowired
 	private AulaService service;
+
+	@Autowired
+	private TurmaService turmaService;
 
 	
 	@GetMapping("/relatorioPorDisciplina")
@@ -50,6 +54,12 @@ public class ReportController {
 	public String relatorioPorTitulo(Model model) {
 		model.addAttribute("disciplinas", disciplinaService.obterDisciplinasPorTitulo());
 		return "relatorios/relatorioPorTitulo";
+	}
+	
+	@GetMapping("/relatorioPorTurma")
+	public String relatorioPorTurma(Model model) {
+		model.addAttribute("turmas", turmaService.obterTurmas());
+		return "relatorios/relatorioPorTurma";
 	}
 	
 	@GetMapping("/html")
@@ -88,7 +98,7 @@ public class ReportController {
 		model.addAttribute("matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
 		model.addAttribute("curso", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getCursoId).map(Curso::getSigla).collect(Collectors.toList()));
 		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
-		return "graficos/graficoDeBarras";
+		return "graficos/graficoDeBarrasDisciplinaId";
 	}
 	
 	@GetMapping("/graficoDeBarrasPorDisciplinaTitulo")
@@ -108,6 +118,26 @@ public class ReportController {
 		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
 
 		return "graficos/graficoBarraPorTituloDisciplina";
+	}
+	
+		
+	@GetMapping("/graficoDeBarrasTurmaId")
+	public String graficoDeBarrasTurmaId(@RequestParam(required = false, value = "turma") Long turma, Model model) {
+		
+		if (turma == null) {
+			return "relatorios/relatorioIndex";
+		}
+		
+		model.addAttribute("turma",turma);
+		model.addAttribute("turmaId",turma);
+		List<Aula> list = service.relatorioDeAulaPorTurmaId(turma);
+		model.addAttribute("aulas", list);
+		model.addAttribute("data", list.stream().map(Aula::getData).collect(Collectors.toList()));
+		model.addAttribute("conectados", list.stream().map(Aula::getQuantidadeAlunos).collect(Collectors.toList()));
+		model.addAttribute("matriculados", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getQuantidadeAluno).collect(Collectors.toList()));
+		model.addAttribute("curso", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getCursoId).map(Curso::getSigla).collect(Collectors.toList()));
+		model.addAttribute("turma", list.stream().map(Aula::getDisciplinaId).map(Disciplina::getTurmaId).map(Turma::getTurmaNome).collect(Collectors.toList()));
+		return "graficos/graficoDeBarrasTurmaId";
 	}
 	
 	@GetMapping("/graficoDeBarrasPorPeriodo")
@@ -169,6 +199,20 @@ public class ReportController {
 			return null;
 		}
 		List<Aula> list = service.relatorioDeAulaPorDisciplina(disciplina);
+		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
+		System.out.println("preenchi reelatorio");
+	
+	return ResponseEntity.ok().header("Content-Disposition", "inline; filename=report.pdf").contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(pdf));	
+		
+	}
+	
+	@GetMapping("/pdfPorTurmaId")
+	public ResponseEntity<InputStreamResource> pdfPorTurmaId(@RequestParam(required = false, value = "turma") Long turma, Model model){
+		
+		if (turma == null) {
+			return null;
+		}
+		List<Aula> list = service.relatorioDeAulaPorTurmaId(turma);
 		ByteArrayInputStream pdf = PDFUtils.gerarPdf(list);
 		System.out.println("preenchi reelatorio");
 	
